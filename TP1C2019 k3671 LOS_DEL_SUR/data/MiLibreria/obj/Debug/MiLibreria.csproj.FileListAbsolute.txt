@@ -1,0 +1,10 @@
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\MiLibreria\obj\Debug\MiLibreria.csprojResolveAssemblyReference.cache
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\MiLibreria\bin\Debug\MiLibreria.dll
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\MiLibreria\bin\Debug\MiLibreria.pdb
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\MiLibreria\obj\Debug\MiLibreria.dll
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\MiLibreria\obj\Debug\MiLibreria.pdb
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\MiLibreria\bin\Debug\MiLibreria.dll
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\MiLibreria\bin\Debug\MiLibreria.pdb
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\MiLibreria\obj\Debug\MiLibreria.csprojResolveAssemblyReference.cache
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\MiLibreria\obj\Debug\MiLibreria.dll
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\MiLibreria\obj\Debug\MiLibreria.pdb

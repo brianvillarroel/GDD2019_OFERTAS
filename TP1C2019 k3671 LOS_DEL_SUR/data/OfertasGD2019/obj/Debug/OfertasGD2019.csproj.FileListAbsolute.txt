@@ -1,0 +1,32 @@
+c:\users\matías\documents\visual studio 2012\Projects\OfertasGD2019\OfertasGD2019\bin\Debug\OfertasGD2019.exe.config
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\bin\Debug\OfertasGD2019.exe
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\bin\Debug\OfertasGD2019.pdb
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.csprojResolveAssemblyReference.cache
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.Properties.Resources.resources
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.csproj.GenerateResource.Cache
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.exe
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.pdb
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.RegistroCliente.resources
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\MiLibreria.Inicio.resources
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\MiLibreria.Login.resources
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\bin\Debug\MiLibreria.dll
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\bin\Debug\MiLibreria.pdb
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.ListadoCliente.resources
+C:\Users\Matías\Documents\Visual Studio 2012\Projects\OfertasGD2019\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.ModificarCliente.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\bin\Debug\OfertasGD2019.exe.config
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.exe
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.pdb
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\bin\Debug\OfertasGD2019.exe
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\bin\Debug\OfertasGD2019.pdb
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\bin\Debug\MiLibreria.dll
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\bin\Debug\MiLibreria.pdb
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.csprojResolveAssemblyReference.cache
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmProveedor.ModificarProveedor.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.ListadoCliente.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.ModificarCliente.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.RegistroCliente.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\MiLibreria.Inicio.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\MiLibreria.Login.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.Properties.Resources.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.csproj.GenerateResource.Cache
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmProveedor.ListadoProveedor.resources
