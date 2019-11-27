@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using MiLibreria;
 
-namespace MiLibreria
+namespace OfertasGD2019
 {
     public partial class Login : Form
     {
         public Login()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         public void RestaurarCampos()
@@ -52,8 +53,30 @@ namespace MiLibreria
                         txtUsuario.Focus();
                         break;
 
-                    case 3: MessageBox.Show("Login Correcto"); ;
-
+                    case 3: ; 
+                        User usuarioActivo = new User();
+                        User.SetearAtributosUsuario(user, usuarioActivo);
+                        if (usuarioActivo.Id == 1)
+                        {
+                            MenuCliente menu = new MenuCliente(usuarioActivo);
+                            this.Hide();
+                            menu.Show();
+                            break;
+                        }
+                        if (usuarioActivo.Rol == 2)
+                        {
+                            MenuAdmin menu = new MenuAdmin();
+                            this.Hide();
+                            menu.Show();
+                            break;
+                        }
+                        if (usuarioActivo.Rol == 3)
+                        {
+                            MenuProveedor menu = new MenuProveedor();
+                            this.Hide();
+                            menu.Show();
+                            break;
+                        }
                         break;
 
                     default: break;

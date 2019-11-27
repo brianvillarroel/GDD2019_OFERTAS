@@ -14,7 +14,6 @@ namespace OfertasGD2019.AbmCliente
 {
     public partial class RegistroCliente : Form
     {
-        private ErrorProvider errProvider;
         public RegistroCliente()
         {
             InitializeComponent();

@@ -17,15 +17,8 @@ namespace MiLibreria
 
             if (camposOblig)
             {
-                try
-                {
                     errorProvider.Clear();
                     return true;
-                }
-                catch (Exception error)
-                {
-                    return false;
-                }
             }
             else
             {

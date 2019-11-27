@@ -18,7 +18,7 @@ namespace OfertasGD2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AbmProveedor.ListadoProveedor());
+            Application.Run(new Login());
         }
     }
 }

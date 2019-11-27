@@ -12,6 +12,9 @@ namespace MiLibreria
 {
     public class BaseDatos
     {
+
+        public static string fechasistema = ConfigurationManager.AppSettings ["FechaSistema"];
+        private static BaseDatos bdd = new BaseDatos();
         //Establecer conexion a la BD
         public SqlConnection ConectarBD()
         {
@@ -29,6 +32,48 @@ namespace MiLibreria
             return conexion;
         }
 
+        //OBTENER FECHA DE SISTEMA
+        public static DateTime ObtenerFechaSistema()
+        {
+            try
+            {
+                DateTime fecha = DateTime.Parse(fechasistema.ToString());
+                string fechaString = Convert.ToString(ConfigurationManager.AppSettings ["FechaSistema"]);
+                fecha = Convert.ToDateTime(fechaString);
+                Console.WriteLine(fecha);
+                return fecha;
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //OBTENER LOS IDS DEL USUARIO
+        public static Object [] GetUsuario(string usuario)
+        {
+            BaseDatos bd = new BaseDatos();
+            var cmd = new SqlCommand("SETEAR_USER", bd.ConectarBD());
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            //DataRow row = new DataRow();
+            Object [] values = new Object [reader.FieldCount];
+            // row = reader;
+            if (reader.Read())
+            {
+                int fieldCount = reader.GetValues(values);
+                fieldCount = reader.GetValues(values);
+                for (int i = 0; i < fieldCount; i++)
+                
+                    return values;
+            }
+
+            return values;
+        }
 
         //
         public static DataSet EjecutarEnBD(string cmd)
@@ -284,5 +329,51 @@ namespace MiLibreria
 
 
         }
+
+
+        public static string ObtenerUsernameCliente(string clienteID)
+        {
+            var cmd = new SqlCommand("OBTENER_USERNAME", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
+
+            string result = cmd.ExecuteScalar().ToString();
+
+            return result;
+        }
+
+
+        //Guardar la Carga de Credito
+
+        public static void UpdateCargaCredito(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("CARGAR_CREDITO", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Carga exitosa.");
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
     }
 }

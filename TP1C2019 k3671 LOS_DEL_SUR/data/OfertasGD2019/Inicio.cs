@@ -11,7 +11,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using OfertasGD2019.AbmCliente;
 
-namespace MiLibreria
+namespace OfertasGD2019
 {
     public partial class Inicio : Form
     {
