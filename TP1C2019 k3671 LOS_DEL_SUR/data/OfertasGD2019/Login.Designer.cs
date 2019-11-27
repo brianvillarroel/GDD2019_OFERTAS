@@ -1,4 +1,4 @@
-﻿namespace MiLibreria
+﻿namespace OfertasGD2019
 {
     partial class Login
     {

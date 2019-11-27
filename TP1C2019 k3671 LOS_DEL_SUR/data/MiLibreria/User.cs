@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 using MiLibreria;
+using System.Security;
 
 
 namespace MiLibreria
@@ -15,15 +16,11 @@ namespace MiLibreria
     public class User
     {
 
-        /*
-         POnerle atributos
-         user_id
-         rol id
-         clie o provee id 
-         
-         */
 
+        public int Id { get; private set; }
+        public int Rol { get; private set; }
 
+        //public User usuarioActivo = new User();
         //Verificar datos de acceso del login
         public static int Autenticar(string usuario, string password)
         {
@@ -42,6 +39,20 @@ namespace MiLibreria
 
             return result;
             
+        }
+
+        public static object [] SetearAtributosUsuario(string usuario, User usuarioActivo)
+        {
+
+            
+            Object [] datosUsuario = BaseDatos.GetUsuario(usuario);
+             if (datosUsuario.Length > 0)
+            {
+                usuarioActivo.Id = Convert.ToInt32(datosUsuario [0].ToString());
+                usuarioActivo.Rol = Convert.ToInt32(datosUsuario [1].ToString());
+            }
+
+             return datosUsuario;
         }
     }
 }

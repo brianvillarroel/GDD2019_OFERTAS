@@ -61,7 +61,7 @@ namespace OfertasGD2019.AbmCliente
         }
 
       
-
+        //Guardar los cambios en la BD
         private void button2_Click(object sender, EventArgs e)
         {
             

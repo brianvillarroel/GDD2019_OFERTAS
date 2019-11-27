@@ -40,7 +40,6 @@ namespace OfertasGD2019.AbmProveedor
         //Traer PROVEEDORES a la app
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
-
             //llenar el grid con los datos de los filtros
             dataGridViewProv.DataSource = BaseDatos.ListarProveedores(txtRSoc.Text, numCuit.Text, txtMail.Text).Tables [0];
 

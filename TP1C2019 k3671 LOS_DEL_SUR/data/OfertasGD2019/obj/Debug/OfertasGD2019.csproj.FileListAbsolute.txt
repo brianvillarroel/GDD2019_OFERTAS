@@ -25,8 +25,12 @@ C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.ListadoCliente.resources
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.ModificarCliente.resources
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmCliente.RegistroCliente.resources
-C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\MiLibreria.Inicio.resources
-C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\MiLibreria.Login.resources
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.Properties.Resources.resources
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.csproj.GenerateResource.Cache
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.AbmProveedor.ListadoProveedor.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.Inicio.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.Login.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.MenuAdmin.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.MenuCliente.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.MenuProveedor.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.CargarCredito.CargaCredito.resources
