@@ -40,7 +40,6 @@ namespace MiLibreria
                 DateTime fecha = DateTime.Parse(fechasistema.ToString());
                 string fechaString = Convert.ToString(ConfigurationManager.AppSettings ["FechaSistema"]);
                 fecha = Convert.ToDateTime(fechaString);
-                Console.WriteLine(fecha);
                 return fecha;
                 
             }
@@ -330,10 +329,10 @@ namespace MiLibreria
 
         }
 
-
+        //OBTENER EL USERNAME DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
         public static string ObtenerUsernameCliente(string clienteID)
         {
-            var cmd = new SqlCommand("OBTENER_USERNAME", bdd.ConectarBD());
+            var cmd = new SqlCommand("OBTENER_USERNAME_CLIENTE", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
@@ -343,6 +342,19 @@ namespace MiLibreria
             return result;
         }
 
+
+        //OBTENER EL USERNAME DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
+        public static string ObtenerUsernameProveedor(string proveeID)
+        {
+            var cmd = new SqlCommand("OBTENER_USERNAME_PROVEEDOR", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = Int32.Parse(proveeID);
+
+            string result = cmd.ExecuteScalar().ToString();
+
+            return result;
+        }
 
         //Guardar la Carga de Credito
 
@@ -375,5 +387,28 @@ namespace MiLibreria
 
         }
 
+        public static void InsertOferta(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("CREAR_OFERTA", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Oferta creada con éxito!");
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -83,6 +83,12 @@
     <Compile Include="CargarCredito\CargaCredito.Designer.cs">
       <DependentUpon>CargaCredito.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrearOferta\CrearOfertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrearOferta\CrearOfertas.Designer.cs">
+      <DependentUpon>CrearOfertas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CargarCredito\CargaCredito.resx">
       <DependentUpon>CargaCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrearOferta\CrearOfertas.resx">
+      <DependentUpon>CrearOfertas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

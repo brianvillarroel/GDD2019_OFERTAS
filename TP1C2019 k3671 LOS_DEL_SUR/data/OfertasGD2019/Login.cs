@@ -72,7 +72,7 @@ namespace OfertasGD2019
                         }
                         if (usuarioActivo.Rol == 3)
                         {
-                            MenuProveedor menu = new MenuProveedor();
+                            MenuProveedor menu = new MenuProveedor(usuarioActivo);
                             this.Hide();
                             menu.Show();
                             break;
