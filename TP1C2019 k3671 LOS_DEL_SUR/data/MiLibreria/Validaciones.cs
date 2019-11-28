@@ -119,6 +119,7 @@ namespace MiLibreria
             return SinErrores;
         }
 
+        //VALIDACION PARA CAMPO NUMERIC
         public static Boolean ValidarNumericTxt(Control Objeto, ErrorProvider ErrorProvider)
         {
            Boolean sinError = true;
@@ -140,7 +141,7 @@ namespace MiLibreria
                 return sinError;
         }
         
-        
+        //Validaciones PARA EL DNI
         void numText_Validating(Control Objeto, ErrorProvider ErrorProvider)
         {
             NumericTextBox miTxt = (NumericTextBox)Objeto;
@@ -208,7 +209,7 @@ namespace MiLibreria
             return SinErrores;
         }
 
-        //Validacion de fecha vencimiento
+        //Validacion de fecha vencimiento DE LA TARJETA EN EL PROCESO DE CARGAR CREDITO
         public static Boolean ValidarTarjeta(Control Objeto, ErrorProvider ErrorProvider)
         {
             Boolean SinErrores = true;
@@ -230,6 +231,7 @@ namespace MiLibreria
             return SinErrores;
         }
 
+        //VALIDACION DE CONTRASEÑAS
         public static Boolean ValidarContrasenias(Control Objeto, ErrorProvider ErrorProvider)
         {
             Boolean SinErrores = true;
@@ -238,7 +240,7 @@ namespace MiLibreria
          //   ErrorProvider.SetError(Objeto, "Formato no valido para dni");
         }
 
-        //Validar campos en la caga de credito
+        //VALIDACION DEL FORMULARIO EN EL PROCESO DE CARGA DE CREDITO
         public static Boolean ValidarCargaCredito(Control Objeto, ErrorProvider ErrorProvider)
         {
             Boolean SinErrores = true;
@@ -304,6 +306,158 @@ namespace MiLibreria
                 }
             }
             return (SinErrores &&  tarjVenc &&  tarjNum );
+        }
+
+
+        //VALIDACION FORMULARIO PARA CREACION DE OFERTAS
+        public static Boolean ValidarCrearOferta(Control Objeto, ErrorProvider ErrorProvider)
+        {
+            Boolean SinErrores = true;
+            
+            Control Campos = Objeto.Controls ["groupBox1"];
+            int precioLista = 0;
+            int precioOferta = 0;
+            int stock = 0;
+            int limiteCompra = 0;
+
+            if (!string.IsNullOrEmpty(Campos.Controls ["numPrecLista"].Text.Trim()))
+            {
+                precioLista = (Convert.ToInt32(Campos.Controls ["numPrecLista"].Text));
+            }
+
+            if (!string.IsNullOrEmpty(Campos.Controls ["numPreOferta"].Text.Trim()))
+            {
+                 precioOferta = (Convert.ToInt32(Campos.Controls ["numPreOferta"].Text));
+            }
+
+            if (!string.IsNullOrEmpty(Campos.Controls ["numStock"].Text.Trim()))
+            {
+                 stock = (Convert.ToInt32(Campos.Controls ["numStock"].Text));
+            }
+
+            if (!string.IsNullOrEmpty(Campos.Controls ["numLimite"].Text.Trim()))
+            {
+                 limiteCompra = (Convert.ToInt32(Campos.Controls ["numLimite"].Text));
+            }
+
+
+            //VAlidacion de la descripcion
+            if (string.IsNullOrEmpty(Campos.Controls ["txtDescr"].Text.Trim()))
+            {
+                ErrorProvider.SetError(Campos.Controls ["txtDescr"], "Este campo es obligatorio");
+                SinErrores = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(Campos.Controls ["txtDescr"], "");
+            }
+
+            //Validaciones de valores entre precio de lista y precio de oferta
+
+            if (precioLista <= 0)
+            {
+                ErrorProvider.SetError(Campos.Controls ["numPrecLista"], "El precio de lista debe ser mayor a 0");
+                SinErrores = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(Campos.Controls ["numPrecLista"], "");
+            }
+
+
+            if (precioOferta >= precioLista | precioOferta == 0)
+            {
+                SinErrores = false;
+                if (precioOferta == 0)
+                {
+                    ErrorProvider.SetError(Campos.Controls ["numPreOferta"], "El precio de oferta debe ser mayor a 0");
+                }
+                
+                else
+                {
+                    ErrorProvider.SetError(Campos.Controls ["numPreOferta"], "El precio de oferta debe ser menor al precio de lista");
+                }
+            }
+            else
+            {
+                ErrorProvider.SetError(Campos.Controls ["numPreOferta"], "");
+            }
+
+            //Validaciones de valores entre stock y liite de compra
+            if (stock <= 0)
+            {
+                ErrorProvider.SetError(Campos.Controls ["numStock"], "El stock debe ser mayor a 0");
+                SinErrores = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(Campos.Controls ["numStock"], "");
+            }
+
+            if (limiteCompra > stock | limiteCompra == 0)
+            {
+                SinErrores = false;
+                if (limiteCompra == 0)
+                {
+                    ErrorProvider.SetError(Campos.Controls ["numLimite"], "El limite de compra debe ser mayor a 0");
+                }
+
+                else
+                {
+                    ErrorProvider.SetError(Campos.Controls ["numLimite"], "El Limite de compra debe ser menor o igual al Stock");
+                }
+                
+            }
+            else
+            {
+                ErrorProvider.SetError(Campos.Controls ["numLimite"], "");
+            }
+
+            //Validaciones de valores entre stock y liite de compra
+            if (stock <= 0)
+            {
+                ErrorProvider.SetError(Campos.Controls ["numStock"], "El stock debe ser mayor a 0");
+                SinErrores = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(Campos.Controls ["numStock"], "");
+            }
+
+            if (limiteCompra > stock | limiteCompra == 0)
+            {
+                SinErrores = false;
+                if (limiteCompra == 0)
+                {
+                    ErrorProvider.SetError(Campos.Controls ["numLimite"], "El limite de compra debe ser mayor a 0");
+                }
+
+                else
+                {
+                    ErrorProvider.SetError(Campos.Controls ["numLimite"], "El Limite de compra debe ser menor o igual al Stock");
+                }
+
+            }
+            else
+            {
+                ErrorProvider.SetError(Campos.Controls ["numLimite"], "");
+            }
+
+
+            //Validaciones de fecha de inciio y venicmiento de la oferta
+            if (Convert.ToDateTime(Campos.Controls ["dateInicio"].Text) >= Convert.ToDateTime(Campos.Controls ["dateVencimiento"].Text))
+           {
+               SinErrores = false;
+               ErrorProvider.SetError(Campos.Controls ["dateInicio"], "La fecha de vencimiento debe ser posterior a la fecha de incio");
+                ErrorProvider.SetError(Campos.Controls ["dateVencimiento"], "La fecha de vencimiento debe ser posterior a la fecha de incio");
+           }
+           else
+           {
+               ErrorProvider.SetError(Campos.Controls ["dateVencimiento"], "");
+               ErrorProvider.SetError(Campos.Controls ["dateInicio"], "");
+           }
+            //DateTime.Compare (DateTime t1, DateTime t2);
+            return SinErrores;
         }
     }
 }

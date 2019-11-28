@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using MiLibreria;
+using OfertasGD2019.CrearOferta;
 
 namespace OfertasGD2019
 {

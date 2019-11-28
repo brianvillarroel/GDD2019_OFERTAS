@@ -34,3 +34,4 @@ C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.MenuCliente.resources
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.MenuProveedor.resources
 C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.CargarCredito.CargaCredito.resources
+C:\UTN\3º Año\Gestion de datos\GDD2019_OFERTAS\TP1C2019 k3671 LOS_DEL_SUR\data\OfertasGD2019\obj\Debug\OfertasGD2019.CrearOferta.CrearOfertas.resources
