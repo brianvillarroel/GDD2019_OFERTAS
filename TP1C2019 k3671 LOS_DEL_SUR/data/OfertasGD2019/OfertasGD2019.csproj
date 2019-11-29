@@ -59,6 +59,12 @@
     <Compile Include="Abm Proveedor\ModificarProveedor.Designer.cs">
       <DependentUpon>ModificarProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComprarOferta\ComprarOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprarOferta\ComprarOferta.Designer.cs">
+      <DependentUpon>ComprarOferta.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmCliente\ListadoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
     </Compile>
     <Compile Include="CargarCredito\CargaCredito.Designer.cs">
       <DependentUpon>CargaCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComprarOferta\ConfirmarCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprarOferta\ConfirmarCompra.Designer.cs">
+      <DependentUpon>ConfirmarCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearOferta\CrearOfertas.cs">
       <SubType>Form</SubType>
@@ -127,6 +139,9 @@
     <EmbeddedResource Include="Abm Proveedor\ModificarProveedor.resx">
       <DependentUpon>ModificarProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\ComprarOferta.resx">
+      <DependentUpon>ComprarOferta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmCliente\ListadoCliente.resx">
       <DependentUpon>ListadoCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CargarCredito\CargaCredito.resx">
       <DependentUpon>CargaCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarOferta\ConfirmarCompra.resx">
+      <DependentUpon>ConfirmarCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrearOferta\CrearOfertas.resx">
       <DependentUpon>CrearOfertas.cs</DependentUpon>

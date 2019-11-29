@@ -456,7 +456,56 @@ namespace MiLibreria
                ErrorProvider.SetError(Campos.Controls ["dateVencimiento"], "");
                ErrorProvider.SetError(Campos.Controls ["dateInicio"], "");
            }
-            //DateTime.Compare (DateTime t1, DateTime t2);
+            return SinErrores;
+        }
+
+
+        //VALIDACION PARA COMPRAR OFERTAS
+        public static Boolean ValidarComprarOferta(Control Objeto, ErrorProvider ErrorProvider, int clienteID, int ofertaID)
+        {
+            Boolean SinErrores = true;
+
+            if (string.IsNullOrEmpty(Objeto.Controls ["numCantidad"].Text.Trim()))
+            {
+                ErrorProvider.SetError(Objeto.Controls ["numCantidad"], "Este campo es obligatorio");
+                SinErrores = false;
+                return SinErrores;
+            }
+            else
+            {
+                ErrorProvider.SetError(Objeto.Controls ["numCantidad"], "");
+            }
+
+             int limiteCompra = Convert.ToInt32(Objeto.Controls ["txtLimite"].Text.ToString());
+            int stock = Convert.ToInt32(Objeto.Controls ["txtStock"].Text.ToString());
+            int cantidad = Convert.ToInt32(Objeto.Controls ["numCantidad"].Text.ToString());
+            float totalCompra = float.Parse(Objeto.Controls ["numTotal"].Text.ToString());
+            float saldo = float.Parse(Objeto.Controls ["txtSaldo"].Text.ToString());
+
+
+            if (cantidad > stock)
+            {
+                MessageBox.Show("La cantidad a comprar no debe superar el stock disponible");
+                SinErrores = false;
+                return SinErrores;
+            }
+
+            if (saldo < totalCompra)
+            {
+                MessageBox.Show("No tiene saldo suficiente para realizar esta compra");
+                SinErrores = false;
+                return SinErrores;
+            }
+
+            /*
+             Validacion con Store procedure para el limite de compra
+             */
+             if (!(BaseDatos.ValidarLimiteDeCompra( clienteID,  ofertaID, limiteCompra, cantidad)))
+            {
+                MessageBox.Show("Con esta compra excede el limite de compra por usuario para dicha oferta");
+                SinErrores = false;
+                return SinErrores;
+            }
             return SinErrores;
         }
     }

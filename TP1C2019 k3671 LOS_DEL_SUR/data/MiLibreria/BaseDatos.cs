@@ -281,6 +281,13 @@ namespace MiLibreria
             return ds;
         }
 
+        /// <summary>
+        /// Llamar al store procedure para obtener los proveedores
+        /// </summary>
+        /// <param name="razonSocial"></param>
+        /// <param name="cuit"></param>
+        /// <param name="mail"></param>
+        /// <returns></returns>
         public static DataSet ListarProveedores(string razonSocial,  string cuit, string mail)
         {
             DataSet listado = new DataSet();
@@ -327,6 +334,21 @@ namespace MiLibreria
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
 
 
+        }
+
+       
+
+         //OBTENER EL SALDO DEL CLIETNE PARA QUE SEA VISIBLE EN LA PANTALLA DE COMPRAR OFERTAS.
+        public static string ObtenerSaldoCliente(string clienteID)
+        {
+            var cmd = new SqlCommand("OBTENER_SALDO_CLIENTE", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
+
+            string result = cmd.ExecuteScalar().ToString();
+
+            return result;
         }
 
         //OBTENER EL USERNAME DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
@@ -404,6 +426,76 @@ namespace MiLibreria
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("¡Oferta creada con éxito!");
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static DataSet ListarOfertas()
+        {
+
+            DataSet listadoOfertas = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LISTAR_OFERTAS", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //sETEAR PARAMETROS
+            cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = BaseDatos.ObtenerFechaSistema();
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+
+
+            dp.Fill(listadoOfertas);
+
+
+            return listadoOfertas;
+        }
+
+        //vALIDAR SI EL CLIENTE SUPERA EL LIMITE DE COMPRAS DE UNA OFERTA
+        public static Boolean ValidarLimiteDeCompra(int clienteID, int ofertaID, int limiteCompra, int cantidad)
+        {
+            bool validado = false;
+            int cantidadYaComprada;
+            var cmd = new SqlCommand("VALIDAR_LIMITE_COMPRA", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@clienteID", SqlDbType.Int).Value = clienteID;
+            cmd.Parameters.Add("@ofertaID", SqlDbType.Int).Value = ofertaID;
+
+            if (cmd.ExecuteScalar() == DBNull.Value)
+            {
+            cantidadYaComprada = 0;
+            }
+            else
+            {
+                cantidadYaComprada = (Convert.ToInt32(cmd.ExecuteScalar()));
+            }
+            validado = ((cantidadYaComprada + cantidad) <= limiteCompra);
+
+            return validado;
+        }
+
+        //Registar la compra y crear el cupon correspondiente a la compra
+        public static void RegistrarCompraOferta(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("REGISTRAR_COMPRA_Y_CUPON", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+                Console.WriteLine(p.Value);
+            }
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡La compra se realizó con éxito!");
             }
             catch (SqlException)
             {
