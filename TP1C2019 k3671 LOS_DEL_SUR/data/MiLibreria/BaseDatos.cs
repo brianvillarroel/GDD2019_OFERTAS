@@ -502,5 +502,108 @@ namespace MiLibreria
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Listar cupones para la view de consumo cupon
+        public static DataSet ListarCupones(int proveeID)
+        {
+
+            DataSet listadoCupones = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LISTAR_CUPONES_PROVEEDOR", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //sETEAR PARAMETROS
+            cmd.Parameters.Add("@proveedorID", SqlDbType.Int).Value = proveeID;
+            cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = BaseDatos.ObtenerFechaSistema();
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+
+
+            dp.Fill(listadoCupones);
+
+
+            return listadoCupones;
+        }
+
+        //Listar clientes para seleccionar a quien se lo entrega el cupon
+        public static DataSet ListarClientesEntrega(string nombre, string apellido, string mail, string dni)
+        {
+
+            DataSet listadoEntregaClientes = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LISTAR_CLIENTES", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //sETEAR PARAMETROS
+            if (nombre.Trim() == "")
+            {
+                cmd.Parameters.Add("@NOMBRE", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@NOMBRE", SqlDbType.NVarChar).Value = nombre;
+            }
+
+            if (apellido.Trim() == "")
+            {
+                cmd.Parameters.Add("@apellido", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@apellido", SqlDbType.NVarChar).Value = apellido;
+            }
+
+            if (mail.Trim() == "")
+            {
+                cmd.Parameters.Add("@mail", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@mail", SqlDbType.NVarChar).Value = mail;
+            }
+
+            if (dni.Trim() == "")
+            {
+                cmd.Parameters.Add("@dni", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@dni", SqlDbType.NVarChar).Value = Convert.ToInt32(dni);
+            }
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+
+
+            dp.Fill(listadoEntregaClientes);
+
+
+            return listadoEntregaClientes;
+        }
+
+        public static void RegistrarEntrega(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("REGISTRAR_ENTREGA_Y_DAR_DE_BAJA_CUPON", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+                Console.WriteLine(p.Value);
+            }
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Se dio de baja el cupon de forma exitosa!");
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

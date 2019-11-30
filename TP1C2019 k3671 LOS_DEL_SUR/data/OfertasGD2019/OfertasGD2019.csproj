@@ -47,16 +47,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abm Proveedor\ListadoProveedor.cs">
+    <Compile Include="AbmProveedor\ConsumoCupon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Proveedor\ListadoProveedor.Designer.cs">
+    <Compile Include="AbmProveedor\ConsumoCupon.Designer.cs">
+      <DependentUpon>ConsumoCupon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmProveedor\EntregaCupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\EntregaCupon.Designer.cs">
+      <DependentUpon>EntregaCupon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmProveedor\ListadoProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmProveedor\ListadoProveedor.Designer.cs">
       <DependentUpon>ListadoProveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Proveedor\ModificarProveedor.cs">
+    <Compile Include="AbmProveedor\ModificarProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Proveedor\ModificarProveedor.Designer.cs">
+    <Compile Include="AbmProveedor\ModificarProveedor.Designer.cs">
       <DependentUpon>ModificarProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="ComprarOferta\ComprarOferta.cs">
@@ -133,10 +145,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Abm Proveedor\ListadoProveedor.resx">
+    <EmbeddedResource Include="AbmProveedor\ConsumoCupon.resx">
+      <DependentUpon>ConsumoCupon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\EntregaCupon.resx">
+      <DependentUpon>EntregaCupon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmProveedor\ListadoProveedor.resx">
       <DependentUpon>ListadoProveedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Proveedor\ModificarProveedor.resx">
+    <EmbeddedResource Include="AbmProveedor\ModificarProveedor.resx">
       <DependentUpon>ModificarProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ComprarOferta\ComprarOferta.resx">
