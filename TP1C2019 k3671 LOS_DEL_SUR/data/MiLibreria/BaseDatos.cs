@@ -141,13 +141,12 @@ namespace MiLibreria
 
         }
 
-        //Guardar los datos modificados de un cliente
-
-        public static void UpdateDatosCliente(List<SqlParameter> parametros)
+        //cHEQUEO EL DNI NO EXISTA ANTES DE GUARDAR LSO DATOS DE UN CLIENTE
+        public static int ChequearDniClientes(List<SqlParameter> parametros)
         {
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("UPDATE_CLIENTE", bd.ConectarBD());
+            var cmd = new SqlCommand("CHEQUEAR_DNI_CLIENTE", bd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -155,9 +154,29 @@ namespace MiLibreria
             {
                 cmd.Parameters.Add(p);
             }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int result = Convert.ToInt32(cmd.ExecuteScalar());
+
             
+            return result;
+        }
 
+        //Guardar los datos modificados de un cliente
 
+        public static void UpdateDatosCliente(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("UPDATE_CLIENTE", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Clear();
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+            
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
 
             try
@@ -174,6 +193,49 @@ namespace MiLibreria
 
         }
 
+
+        //cHEQUEO EL CUIT NO EXISTA ANTES DE GUARDAR LSO DATOS DE UN CLIENTE
+        public static int ChequearCuitProveedor(List<SqlParameter> parametros)
+        {
+            BaseDatos bd = new BaseDatos();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("CHEQUEAR_CUIT_PROVEE", bd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int result = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+
+            return result;
+        }
+
+        //cHEQUEO QUE LA Razon Social NO EXISTA ANTES DE GUARDAR LSO DATOS DE UN CLIENTE
+        public static int ChequearRazSocProveedor(List<SqlParameter> parametros)
+        {
+            BaseDatos bd = new BaseDatos();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("CHEQUEAR_RS_PROVEE", bd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+           
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int result = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+
+            return result;
+        }
         //Guardar los datos modificados de un Proveedor
 
         public static void UpdatedatosProveedor(List<SqlParameter> parametros)
@@ -183,7 +245,6 @@ namespace MiLibreria
             var cmd = new SqlCommand("UPDATE_PROVEEDOR", bd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-
             foreach (SqlParameter p in parametros)
             {
                 cmd.Parameters.Add(p);
@@ -209,76 +270,57 @@ namespace MiLibreria
 
 
         //Armar Listado de clientes en ABM CLIENTE
-        public DataSet BuscarClientes(string tabla, string nombre, string apellido, string dni,string mail) 
+        public static DataSet ListarClientes(string nombre, string apellido, string dni, string mail) 
         {
-            DataSet ds;
-            int cantFiltros = 0;
-
-            //string query = "SELECT TOP 10 CLIE_ID, CLIE_NOMBRE, CLIE_APELLIDO, CLIE_DNI, CLIE_MAIL, CLIE_FECHA_NAC FROM LOS_DEL_SUR.CLIENTE ";
-            string query = "SELECT  CLIE_ID, CLIE_NOMBRE, CLIE_APELLIDO, CLIE_DNI, CLIE_MAIL, CLIE_FECHA_NAC, USUARIO_Id, USUARIO_ESTADO  FROM LOS_DEL_SUR.CLIENTE  c join LOS_DEL_SUR.USUARIO u on c.CLIE_USUARIO = u.USUARIO_Id ";
-            
-
+            DataSet listadoClientes = new DataSet();
             //Abrir conexión y el store procedure
-            if (string.Equals(nombre, "") && string.Equals(apellido, "") && string.Equals(dni, "") && string.Equals(mail, ""))
-            {
-                ds = EjecutarEnBD(query);
+            var cmd = new SqlCommand("LISTAR_CLIENTES", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
 
-                return ds;
+            //sETEAR PARAMETROS
+            if (nombre.Trim() == "")
+            {
+                cmd.Parameters.Add("@NOMBRE", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@NOMBRE", SqlDbType.NVarChar).Value = nombre;
             }
 
-            if (!string.Equals(nombre, ""))
+            if (apellido.Trim() == "")
             {
-                cantFiltros = cantFiltros +1;
-                query = query + " WHERE CLIE_NOMBRE LIKE '%" + nombre + "%'";
+                cmd.Parameters.Add("@apellido", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@apellido", SqlDbType.NVarChar).Value = apellido;
             }
 
-             if (!string.Equals(apellido, ""))
+            if (mail.Trim() == "")
             {
-                
-                 if(cantFiltros > 0)
-                 {
-                     query = query + " AND ";
-                 } else {
-                    query = query + " WHERE ";
-                 }
-                 cantFiltros = cantFiltros + 1;
-
-                 query = query + " CLIE_APELLIDO LIKE '%" + apellido + "%'";
+                cmd.Parameters.Add("@mail", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@mail", SqlDbType.NVarChar).Value = mail;
             }
 
-             if (!string.Equals(dni, ""))
+            if (dni.Trim() == "")
             {
-                int intDni = Convert.ToInt32(dni);
-
-                  if(cantFiltros > 0)
-                 {
-                     query = query + " AND ";
-                 } else {
-                    query = query + " WHERE ";
-                 }
-                  cantFiltros = cantFiltros + 1;
-                  query = query + " CLIE_DNI = " + intDni;
+                cmd.Parameters.Add("@dni", SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                cmd.Parameters.Add("@dni", SqlDbType.NVarChar).Value = Convert.ToInt32(dni);
             }
 
-             if (!string.Equals(mail, ""))
-            {
-                  if(cantFiltros > 0)
-                 {
-                     query = query + " AND ";
-                 } else {
-                    query = query + " WHERE ";
-                 }
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
 
-                cantFiltros = cantFiltros + 1;
-                query = query + " CLIE_MAIL LIKE '%" + mail + "%'";
-            }
 
-            query = string.Format(query) ;
+            dp.Fill(listadoClientes);
 
-            
-            ds = EjecutarEnBD(query);
 
-            return ds;
+            return listadoClientes;
         }
 
         /// <summary>
@@ -366,12 +408,12 @@ namespace MiLibreria
 
 
         //OBTENER EL USERNAME DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
-        public static string ObtenerUsernameProveedor(string proveeID)
+        public static string ObtenerUsernameProveedor(int proveeID)
         {
             var cmd = new SqlCommand("OBTENER_USERNAME_PROVEEDOR", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = Int32.Parse(proveeID);
+            cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = proveeID;
 
             string result = cmd.ExecuteScalar().ToString();
 
@@ -488,7 +530,6 @@ namespace MiLibreria
             foreach (SqlParameter p in parametros)
             {
                 cmd.Parameters.Add(p);
-                Console.WriteLine(p.Value);
             }
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
 
@@ -605,5 +646,73 @@ namespace MiLibreria
             }
         }
 
+        //Validar que el dni no este registrado para el registro de un cliente
+        public static int ValidarDniDisponible(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("VALIDAR_DNI_BASEDATOS", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+
+
+            return resultado;
+        }
+
+        //Validar que el username no este registrado 
+        public static int ValidarUsernameDisponible(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("VALIDAR_USERNAME_BASEDATOS", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+
+
+            return resultado;
+        }
+
+        //Registrar en la BD la creacion de un nuevo cliente
+        public static void RegistrarCliente(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("REGISTRAR_CLIENTE", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Registro realizado con exito!");
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
+            }
+        }
     }
 }

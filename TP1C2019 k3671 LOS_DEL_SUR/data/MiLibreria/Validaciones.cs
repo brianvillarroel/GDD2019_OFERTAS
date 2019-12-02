@@ -20,6 +20,7 @@ namespace MiLibreria
             Boolean SinErrores = true;
             Boolean MailValidado = true;
             Boolean CuitValidado = true;
+            Boolean FechaNacimiento = true;
             
             foreach (Control element in Objeto.Controls)  
             {
@@ -90,10 +91,15 @@ namespace MiLibreria
                             }
 
                         }
+                        if (Item is DateTxtBox)
+                        {
+                            DateTxtBox ObjDate = (DateTxtBox)Item;
+                            FechaNacimiento = ValidarFechaNacimiento(ObjDate, ErrorProvider);
+                        }
                     }
                 }
             }
-            return (SinErrores && MailValidado && CuitValidado && CuitValidado);
+            return (SinErrores && MailValidado && CuitValidado && CuitValidado && FechaNacimiento);
         }
 
         //Funcion para validar el input del mail.
@@ -112,6 +118,27 @@ namespace MiLibreria
                 ErrorProvider.SetError(Objeto, "Formato no valido para Mail");
             }
             else 
+            {
+                ErrorProvider.SetError(Objeto, "");
+            }
+
+            return SinErrores;
+        }
+
+        public static Boolean ValidarFechaNacimiento(Control Objeto, ErrorProvider ErrorProvider)
+        {
+            Boolean SinErrores = true;
+            Regex patronFeaNac = new Regex(@"^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$", RegexOptions.IgnoreCase);
+
+
+            SinErrores = (!string.IsNullOrEmpty(Objeto.Text.Trim()) && patronFeaNac.IsMatch(Objeto.Text.Trim()));
+
+
+            if (!SinErrores)
+            {
+                ErrorProvider.SetError(Objeto, "El formato de ser: DD/MM/AAAA");
+            }
+            else
             {
                 ErrorProvider.SetError(Objeto, "");
             }
@@ -142,15 +169,69 @@ namespace MiLibreria
         }
         
         //Validaciones PARA EL DNI
-        void numText_Validating(Control Objeto, ErrorProvider ErrorProvider)
+        public static Boolean ValidarFormatoDni(Control Objeto, ErrorProvider ErrorProvider)
         {
-            NumericTextBox miTxt = (NumericTextBox)Objeto;
-            
-            if (string.IsNullOrEmpty(miTxt.Text))
+            Boolean SinErrores = true;
+            Regex patronDni = new Regex("^[1-9]{1}[0-9]{6,7}$");
+
+
+            SinErrores = (patronDni.IsMatch(Objeto.Text.Trim()));
+
+
+            if (!SinErrores)
             {
-                miTxt.Select(0, miTxt.Text.Length);
-                ErrorProvider.SetError(Objeto, "Formato no valido para dni");
+                ErrorProvider.SetError(Objeto, "Formato no valido para DNI");
             }
+            else
+            {
+                ErrorProvider.SetError(Objeto, "");
+            }
+
+            return SinErrores;
+        }
+
+        //Validaciones PARA EL USERNAME
+        public static Boolean ValidarUserName(Control Objeto, ErrorProvider ErrorProvider)
+        {
+            Boolean SinErrores = true;
+            Regex patronDni = new Regex("^[_a-zA-Z0-9]{4,}$");
+
+
+            SinErrores = (patronDni.IsMatch(Objeto.Text.Trim()));
+
+
+            if (!SinErrores)
+            {
+                ErrorProvider.SetError(Objeto, "El usuario debe tener al menos 4 caracteres alfanumericos sin espacios");
+            }
+            else
+            {
+                ErrorProvider.SetError(Objeto, "");
+            }
+
+            return SinErrores;
+        }
+
+        //Validaciones campos que solo aceptan caracteres alfabéticos
+        public static Boolean ValidarNombres(Control Objeto, ErrorProvider ErrorProvider)
+        {
+            Boolean SinErrores = true;
+            Regex patronNombres = new Regex(@"^[A-Za-z]+([\s][A-Za-z][A-Za-z]+)*$");
+
+
+            SinErrores = (patronNombres.IsMatch(Objeto.Text.Trim()));
+
+
+            if (!SinErrores)
+            {
+                ErrorProvider.SetError(Objeto, "Solo puede contener letras");
+            }
+            else
+            {
+                ErrorProvider.SetError(Objeto, "");
+            }
+
+            return SinErrores;
         }
 
         //Funcion para validar el input del CUIT.
@@ -181,7 +262,7 @@ namespace MiLibreria
             Boolean SinErrores = true;
             string vencimiento = ("01/" + Objeto.Text.Trim());
 
-            Regex patronVenc = new Regex("^0([1-9]{1})|1[]0,1,2]{1}[/]((19[0-9]{2})|(20[0-9]{2}))$");
+            Regex patronVenc = new Regex("^((0([1-9]{1}))|(1[]0,1,2]{1}))[/]((19[0-9]{2})|(20[0-9]{2}))$");
             
             SinErrores = (patronVenc.IsMatch(Objeto.Text.Trim()));
 
@@ -213,10 +294,10 @@ namespace MiLibreria
         public static Boolean ValidarTarjeta(Control Objeto, ErrorProvider ErrorProvider)
         {
             Boolean SinErrores = true;
-            Regex patronCuit = new Regex("^[0-9]{16}$");
+            Regex patronTarjeta = new Regex("^[0-9]{16}$");
 
 
-            SinErrores = (patronCuit.IsMatch(Objeto.Text.Trim()));
+            SinErrores = (patronTarjeta.IsMatch(Objeto.Text.Trim()));
 
 
             if (!SinErrores)
@@ -232,12 +313,22 @@ namespace MiLibreria
         }
 
         //VALIDACION DE CONTRASEÑAS
-        public static Boolean ValidarContrasenias(Control Objeto, ErrorProvider ErrorProvider)
+        public static Boolean ValidarContrasenias(Control Objeto, ErrorProvider ErrorProvider,string contrasenia)
         {
             Boolean SinErrores = true;
-            //DateTime fecha = Objeto.Value;
+            string confirmarContr = Objeto.Text;
+
+            if (confirmarContr == contrasenia)
+            {
+                return SinErrores;
+            }
+            else
+            {
+                ErrorProvider.SetError(Objeto, "Las contraseñas deben coincidir");
+                SinErrores = false;
+            }
+
             return SinErrores;
-         //   ErrorProvider.SetError(Objeto, "Formato no valido para dni");
         }
 
         //VALIDACION DEL FORMULARIO EN EL PROCESO DE CARGA DE CREDITO
@@ -269,11 +360,6 @@ namespace MiLibreria
                                 {
                                     ErrorProvider.SetError(Obj, "");
                                 }
-
-                                if (Obj.Name == "dateVenc")
-                                {
-                                    tarjVenc = ValidarTarjetaVencimiento(Obj, ErrorProvider);
-                                }
                             }
                          }
 
@@ -301,6 +387,12 @@ namespace MiLibreria
                                 ErrorProvider.SetError(Obj, "");
                             }
                             
+                        }
+
+                        if (Item is DateTxtBox)
+                        {
+                            DateTxtBox ObjDate = (DateTxtBox)Item;
+                            tarjVenc = ValidarTarjetaVencimiento(ObjDate, ErrorProvider);
                         }
                     }
                 }
@@ -507,6 +599,93 @@ namespace MiLibreria
                 return SinErrores;
             }
             return SinErrores;
+        }
+
+        //
+        public static Boolean ValidarRegistroCliente(Control Objeto, ErrorProvider ErrorProvider)
+        {
+            Boolean validado = true;
+            Boolean MailValidado = true;
+            Boolean dni = true;
+            Boolean username = true;
+            Boolean nombres = true;
+            Boolean contrasenias = true;
+            
+            foreach (Control Item in Objeto.Controls)
+            {
+                if (Item is ErrorTxtBox)
+                {
+
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    if (Obj.Validar == true)
+                    {
+                        if (string.IsNullOrEmpty(Obj.Text.Trim()))
+                        {
+                            ErrorProvider.SetError(Obj, "Este campo es obligatorio");
+                            validado = false;
+                        }
+                        else
+                        {
+                            ErrorProvider.SetError(Obj, "");
+                        }
+
+                    }
+
+                }
+
+                if (Item is ErrorTxtBox && Item.Name == "txtUser")
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    username = ValidarUserName(Obj, ErrorProvider);
+                }
+
+                if (Item is ErrorTxtBox && (Item.Name == "txtName" || Item.Name == "txtApellido" || Item.Name == "txtCiudad"))
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    nombres = ValidarNombres(Obj, ErrorProvider);
+                }
+
+                if (Item is ErrorTxtBox && (Item.Name == "txtConfPass" ))
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    contrasenias = ValidarContrasenias(Obj, ErrorProvider, Objeto.Controls ["txtPass"].Text.ToString());
+                }
+
+                if (Item is TxtBoxMail)
+                {
+                    TxtBoxMail ObjMail = (TxtBoxMail)Item;
+                    MailValidado = ValidarEmail(ObjMail, ErrorProvider);
+                }
+                if (Item is NumericTextBox)
+                {
+
+                    NumericTextBox Obj = (NumericTextBox)Item;
+                    if (Obj.Validar == true)
+                    {
+                        if (string.IsNullOrEmpty(Obj.Text.Trim()))
+                        {
+                            ErrorProvider.SetError(Obj, "Este campo es obligatorio");
+                            validado = false;
+                        }
+                        else
+                        {
+                            ErrorProvider.SetError(Obj, "");
+                        }
+
+                    }
+
+                }
+
+                if (Item is NumericTextBox && Item.Name == "numDni")
+                {
+                    NumericTextBox Obj = (NumericTextBox)Item;
+                    dni = ValidarFormatoDni(Obj, ErrorProvider);
+                }
+
+
+            }
+
+            return (validado && MailValidado && dni && username && nombres && contrasenias);
         }
     }
 }

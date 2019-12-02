@@ -7,6 +7,9 @@ using System.Data;
 using MiLibreria;
 using OfertasGD2019.CrearOferta;
 using OfertasGD2019.ComprarOferta;
+using OfertasGD2019.AbmCliente;
+using OfertasGD2019.CargarCredito;
+using OfertasGD2019.AbmProveedor;
 
 namespace OfertasGD2019
 {
@@ -20,7 +23,7 @@ namespace OfertasGD2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new RegistroCliente());
         }
     }
 }

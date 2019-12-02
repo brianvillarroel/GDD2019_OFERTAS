@@ -36,5 +36,12 @@ namespace OfertasGD2019
                  this.Hide();
                  registro.Show();
              }
+
+             private void button1_Click(object sender, EventArgs e)
+             {
+                 RegistroCliente registro = new RegistroCliente();
+                 this.Hide();
+                 registro.Show();
+             }
     }
 }

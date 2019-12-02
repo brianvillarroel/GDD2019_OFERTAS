@@ -46,6 +46,12 @@
     <Compile Include="ABMCliente.cs" />
     <Compile Include="BaseDatos.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DateTxtBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DateTxtBox.Designer.cs">
+      <DependentUpon>DateTxtBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="ErrorTxtBox.cs">
       <SubType>Component</SubType>
     </Compile>

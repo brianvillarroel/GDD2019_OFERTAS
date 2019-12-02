@@ -56,7 +56,7 @@ namespace OfertasGD2019
                     case 3: ; 
                         User usuarioActivo = new User();
                         User.SetearAtributosUsuario(user, usuarioActivo);
-                        if (usuarioActivo.Id == 1)
+                        if (usuarioActivo.Rol == 1)
                         {
                             MenuCliente menu = new MenuCliente(usuarioActivo);
                             this.Hide();
@@ -65,7 +65,7 @@ namespace OfertasGD2019
                         }
                         if (usuarioActivo.Rol == 2)
                         {
-                            MenuAdmin menu = new MenuAdmin();
+                            MenuAdmin menu = new MenuAdmin(usuarioActivo);
                             this.Hide();
                             menu.Show();
                             break;

@@ -52,7 +52,7 @@
             this.txtPass = new MiLibreria.ErrorTxtBox();
             this.txtUser = new MiLibreria.ErrorTxtBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtFechaNac = new MiLibreria.ErrorTxtBox();
+            this.txtFechaNac = new MiLibreria.DateTxtBox();
             this.txtNombre = new MiLibreria.ErrorTxtBox();
             this.numTelefono = new MiLibreria.NumericTextBox();
             this.numDNI = new MiLibreria.NumericTextBox();
@@ -367,12 +367,11 @@
             // 
             // txtFechaNac
             // 
-            this.txtFechaNac.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtFechaNac.Location = new System.Drawing.Point(1033, 103);
             this.txtFechaNac.Name = "txtFechaNac";
             this.txtFechaNac.Size = new System.Drawing.Size(270, 26);
-            this.txtFechaNac.TabIndex = 38;
-            this.txtFechaNac.Validar = true;
+            this.txtFechaNac.TabIndex = 41;
+            this.txtFechaNac.Validar = false;
             // 
             // txtNombre
             // 
@@ -396,6 +395,7 @@
             // 
             this.numDNI.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numDNI.Location = new System.Drawing.Point(583, 61);
+            this.numDNI.MaxLength = 8;
             this.numDNI.Name = "numDNI";
             this.numDNI.Size = new System.Drawing.Size(270, 26);
             this.numDNI.TabIndex = 32;
@@ -502,6 +502,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ModificarCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModificarCliente";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -533,7 +534,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private MiLibreria.ErrorTxtBox txtApellido;
-        private MiLibreria.ErrorTxtBox txtFechaNac;
         private MiLibreria.TxtBoxMail txtMail;
         private MiLibreria.NumericTextBox numTelefono;
         private System.Windows.Forms.CheckBox checkHabil;
@@ -553,5 +553,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
+        private MiLibreria.DateTxtBox txtFechaNac;
     }
 }

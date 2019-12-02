@@ -15,9 +15,16 @@ namespace OfertasGD2019.AbmCliente
 {
     public partial class ListadoCliente : Form
     {
+        int rolUsuario;
         public ListadoCliente()
         {
             InitializeComponent();
+        }
+
+        public ListadoCliente(int rolID)
+        {
+            InitializeComponent();
+            rolUsuario = rolID;
         }
 
         //Cuando carga el grid
@@ -37,14 +44,14 @@ namespace OfertasGD2019.AbmCliente
 
         }
 
-        //Traer clientes a la app
+        //Traer clientes a la app cuando se hace click en "Buscar"
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            BaseDatos bd = new BaseDatos();
-            string tabla = "CLIENTE";
+            //BaseDatos bd = new BaseDatos();
+            //string tabla = "CLIENTE";
 
             //llenar el grid con los datos de los filtros
-            dataGridView1.DataSource = bd.BuscarClientes(tabla, txtNombre.Text, txtApellido.Text, numDni.Text, txtMail.Text).Tables [0];
+            dataGridView1.DataSource = BaseDatos.ListarClientes(txtNombre.Text, txtApellido.Text, numDni.Text, txtMail.Text).Tables [0];
 
             this.dataGridView1.Columns ["Modificar"].Visible = true;
         }
@@ -83,7 +90,7 @@ namespace OfertasGD2019.AbmCliente
                 //obtengo el valor del cliente ID de la fila seleccionada para modificar y abro la ventana de modificar con el valor del id.    
                 int clieID = Convert.ToInt32(dataGridView1.SelectedRows [0].Cells ["CLIE_ID"].Value);
 
-                ModificarCliente modificar = new ModificarCliente(clieID);
+                ModificarCliente modificar = new ModificarCliente(clieID, rolUsuario);
                 //this.Hide();
                 modificar.Show();
 
