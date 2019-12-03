@@ -327,6 +327,7 @@
             // 
             this.txtPass.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtPass.Location = new System.Drawing.Point(133, 113);
+            this.txtPass.MaxLength = 25;
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(270, 26);
             this.txtPass.TabIndex = 36;
@@ -368,6 +369,7 @@
             // txtFechaNac
             // 
             this.txtFechaNac.Location = new System.Drawing.Point(1033, 103);
+            this.txtFechaNac.MaxLength = 10;
             this.txtFechaNac.Name = "txtFechaNac";
             this.txtFechaNac.Size = new System.Drawing.Size(270, 26);
             this.txtFechaNac.TabIndex = 41;
@@ -377,6 +379,7 @@
             // 
             this.txtNombre.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtNombre.Location = new System.Drawing.Point(133, 60);
+            this.txtNombre.MaxLength = 25;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(270, 26);
             this.txtNombre.TabIndex = 32;
@@ -386,6 +389,7 @@
             // 
             this.numTelefono.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numTelefono.Location = new System.Drawing.Point(1033, 61);
+            this.numTelefono.MaxLength = 12;
             this.numTelefono.Name = "numTelefono";
             this.numTelefono.Size = new System.Drawing.Size(270, 26);
             this.numTelefono.TabIndex = 40;
@@ -395,7 +399,7 @@
             // 
             this.numDNI.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numDNI.Location = new System.Drawing.Point(583, 61);
-            this.numDNI.MaxLength = 8;
+            this.numDNI.MaxLength = 10;
             this.numDNI.Name = "numDNI";
             this.numDNI.Size = new System.Drawing.Size(270, 26);
             this.numDNI.TabIndex = 32;
@@ -405,6 +409,7 @@
             // 
             this.txtMail.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtMail.Location = new System.Drawing.Point(583, 103);
+            this.txtMail.MaxLength = 50;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(270, 26);
             this.txtMail.TabIndex = 39;
@@ -413,6 +418,7 @@
             // 
             this.txtApellido.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtApellido.Location = new System.Drawing.Point(133, 100);
+            this.txtApellido.MaxLength = 25;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(270, 26);
             this.txtApellido.TabIndex = 36;
@@ -443,6 +449,7 @@
             // 
             this.txtDepto.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtDepto.Location = new System.Drawing.Point(583, 106);
+            this.txtDepto.MaxLength = 4;
             this.txtDepto.Name = "txtDepto";
             this.txtDepto.Size = new System.Drawing.Size(270, 26);
             this.txtDepto.TabIndex = 37;
@@ -452,6 +459,7 @@
             // 
             this.txtCP.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtCP.Location = new System.Drawing.Point(1033, 52);
+            this.txtCP.MaxLength = 5;
             this.txtCP.Name = "txtCP";
             this.txtCP.Size = new System.Drawing.Size(270, 26);
             this.txtCP.TabIndex = 38;
@@ -461,6 +469,7 @@
             // 
             this.numPiso.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numPiso.Location = new System.Drawing.Point(583, 52);
+            this.numPiso.MaxLength = 3;
             this.numPiso.Name = "numPiso";
             this.numPiso.Size = new System.Drawing.Size(270, 26);
             this.numPiso.TabIndex = 32;
@@ -470,6 +479,7 @@
             // 
             this.txtCiudad.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtCiudad.Location = new System.Drawing.Point(133, 52);
+            this.txtCiudad.MaxLength = 50;
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(270, 26);
             this.txtCiudad.TabIndex = 32;
@@ -479,6 +489,7 @@
             // 
             this.txtCalle.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtCalle.Location = new System.Drawing.Point(133, 106);
+            this.txtCalle.MaxLength = 50;
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(270, 26);
             this.txtCalle.TabIndex = 36;

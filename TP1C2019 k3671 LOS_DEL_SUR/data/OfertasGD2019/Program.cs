@@ -23,7 +23,7 @@ namespace OfertasGD2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegistroProveedor());
+            Application.Run(new MenuAdmin());
         }
     }
 }

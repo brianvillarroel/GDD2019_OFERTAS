@@ -133,7 +133,7 @@ namespace OfertasGD2019.AbmCliente
             parametros.Add(parametro);
 
             parametro = new SqlParameter("@clieTelefono", SqlDbType.Int);
-            parametro.Value = Int32.Parse(this.numTel.Text);
+            parametro.Value = Int64.Parse(this.numTel.Text);
             parametros.Add(parametro);
 
             parametro = new SqlParameter("@clieCiudad", SqlDbType.NVarChar, 225);

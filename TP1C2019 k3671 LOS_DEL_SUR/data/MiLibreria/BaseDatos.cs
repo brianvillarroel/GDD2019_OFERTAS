@@ -397,7 +397,18 @@ namespace MiLibreria
         public static string ObtenerUsernameCliente(string clienteID)
         {
             var cmd = new SqlCommand("OBTENER_USERNAME_CLIENTE", bdd.ConectarBD());
-            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
+
+            string result = cmd.ExecuteScalar().ToString();
+
+            return result;
+        }
+
+        //OBTENER EL USERNAME y sALDO DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
+        public static string ObtenerUsernameSaldoCliente(string clienteID)
+        {
+            var cmd = new SqlCommand("OBTENER_USERNAME_SALDO_CLIENTE", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
 
@@ -411,7 +422,6 @@ namespace MiLibreria
         public static string ObtenerUsernameProveedor(int proveeID)
         {
             var cmd = new SqlCommand("OBTENER_USERNAME_PROVEEDOR", bdd.ConectarBD());
-            SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = proveeID;
 
@@ -755,6 +765,32 @@ namespace MiLibreria
 
 
             return resultado;
+        }
+
+        //Registrar Proveedor en la base de datos
+        public static void RegistrarProveedor(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("REGISTRAR_PROVEEDOR", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Registro realizado con exito!");
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
+            }
         }
     }
 }
