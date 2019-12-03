@@ -267,6 +267,7 @@
             // 
             this.txtCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCP.Location = new System.Drawing.Point(309, 420);
+            this.txtCP.MaxLength = 5;
             this.txtCP.Name = "txtCP";
             this.txtCP.Size = new System.Drawing.Size(239, 23);
             this.txtCP.TabIndex = 74;
@@ -276,6 +277,7 @@
             // 
             this.txtDepto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDepto.Location = new System.Drawing.Point(452, 389);
+            this.txtDepto.MaxLength = 4;
             this.txtDepto.Name = "txtDepto";
             this.txtDepto.Size = new System.Drawing.Size(97, 23);
             this.txtDepto.TabIndex = 71;
@@ -285,6 +287,7 @@
             // 
             this.numPiso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numPiso.Location = new System.Drawing.Point(308, 389);
+            this.numPiso.MaxLength = 3;
             this.numPiso.Name = "numPiso";
             this.numPiso.Size = new System.Drawing.Size(81, 23);
             this.numPiso.TabIndex = 70;
@@ -294,6 +297,7 @@
             // 
             this.txtDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDir.Location = new System.Drawing.Point(309, 360);
+            this.txtDir.MaxLength = 50;
             this.txtDir.Name = "txtDir";
             this.txtDir.Size = new System.Drawing.Size(240, 23);
             this.txtDir.TabIndex = 69;
@@ -303,6 +307,7 @@
             // 
             this.txtCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCiudad.Location = new System.Drawing.Point(309, 330);
+            this.txtCiudad.MaxLength = 50;
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(240, 23);
             this.txtCiudad.TabIndex = 68;
@@ -312,6 +317,7 @@
             // 
             this.numTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numTel.Location = new System.Drawing.Point(309, 300);
+            this.numTel.MaxLength = 12;
             this.numTel.Name = "numTel";
             this.numTel.Size = new System.Drawing.Size(240, 23);
             this.numTel.TabIndex = 67;
@@ -321,6 +327,7 @@
             // 
             this.txtMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMail.Location = new System.Drawing.Point(309, 270);
+            this.txtMail.MaxLength = 50;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(240, 23);
             this.txtMail.TabIndex = 66;
@@ -329,6 +336,7 @@
             // 
             this.numDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numDni.Location = new System.Drawing.Point(309, 240);
+            this.numDni.MaxLength = 10;
             this.numDni.Name = "numDni";
             this.numDni.Size = new System.Drawing.Size(240, 23);
             this.numDni.TabIndex = 65;
@@ -338,6 +346,7 @@
             // 
             this.txtApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.Location = new System.Drawing.Point(309, 210);
+            this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(240, 23);
             this.txtApellido.TabIndex = 64;
@@ -347,6 +356,7 @@
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(309, 180);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(240, 23);
             this.txtName.TabIndex = 63;
@@ -356,6 +366,7 @@
             // 
             this.txtConfPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfPass.Location = new System.Drawing.Point(309, 150);
+            this.txtConfPass.MaxLength = 25;
             this.txtConfPass.Name = "txtConfPass";
             this.txtConfPass.PasswordChar = '*';
             this.txtConfPass.Size = new System.Drawing.Size(240, 23);
@@ -366,6 +377,7 @@
             // 
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(309, 119);
+            this.txtPass.MaxLength = 25;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(240, 23);
@@ -376,6 +388,7 @@
             // 
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Location = new System.Drawing.Point(309, 86);
+            this.txtUser.MaxLength = 25;
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(240, 23);
             this.txtUser.TabIndex = 60;

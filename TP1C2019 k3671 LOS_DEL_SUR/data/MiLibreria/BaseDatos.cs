@@ -714,5 +714,47 @@ namespace MiLibreria
                 cmd.Parameters.Clear();
             }
         }
+
+        //Validar que el cuit no este registrado para el registro de un proveedor
+        public static int ValidarCuitDisponible(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("VALIDAR_CUIT_REGISTRO", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+
+
+            return resultado;
+        }
+
+        //Validar que la razon social no este registrado para el registro de un proveedor
+        public static int ValidarRazSocDisponible(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("VALIDAR_RAZON_SOC_REGISTRO", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+
+
+            return resultado;
+        }
     }
 }

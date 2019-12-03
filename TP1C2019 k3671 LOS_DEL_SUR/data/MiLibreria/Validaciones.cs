@@ -601,14 +601,16 @@ namespace MiLibreria
             return SinErrores;
         }
 
-        //
+        // Validacion form de registro de clientes
         public static Boolean ValidarRegistroCliente(Control Objeto, ErrorProvider ErrorProvider)
         {
             Boolean validado = true;
             Boolean MailValidado = true;
             Boolean dni = true;
             Boolean username = true;
-            Boolean nombres = true;
+            Boolean nombre = true;
+            Boolean apellido = true;
+            Boolean ciudad = true;
             Boolean contrasenias = true;
             
             foreach (Control Item in Objeto.Controls)
@@ -639,10 +641,22 @@ namespace MiLibreria
                     username = ValidarUserName(Obj, ErrorProvider);
                 }
 
-                if (Item is ErrorTxtBox && (Item.Name == "txtName" || Item.Name == "txtApellido" || Item.Name == "txtCiudad"))
+                if (Item is ErrorTxtBox && (Item.Name == "txtName"))
                 {
                     ErrorTxtBox Obj = (ErrorTxtBox)Item;
-                    nombres = ValidarNombres(Obj, ErrorProvider);
+                    nombre = ValidarNombres(Obj, ErrorProvider);
+                }
+
+                if (Item is ErrorTxtBox && ( Item.Name == "txtApellido" ))
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    apellido = ValidarNombres(Obj, ErrorProvider);
+                }
+
+                if (Item is ErrorTxtBox && (Item.Name == "txtCiudad"))
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    ciudad = ValidarNombres(Obj, ErrorProvider);
                 }
 
                 if (Item is ErrorTxtBox && (Item.Name == "txtConfPass" ))
@@ -685,7 +699,105 @@ namespace MiLibreria
 
             }
 
-            return (validado && MailValidado && dni && username && nombres && contrasenias);
+            return (validado && MailValidado && dni && username && nombre && contrasenias && apellido && ciudad);
+        }
+
+        //
+        public static Boolean ValidarRegistroProveedor(Control Objeto, ErrorProvider ErrorProvider)
+        {
+            Boolean validado = true;
+            Boolean MailValidado = true;
+            Boolean CuitValidado = true;
+            Boolean username = true;
+            Boolean contacto = true;
+            Boolean contrasenias = true;
+            Boolean ciudad = true;
+            Boolean rubro = true;
+
+            foreach (Control Item in Objeto.Controls)
+            {
+                if (Item is ErrorTxtBox)
+                {
+
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    if (Obj.Validar == true)
+                    {
+                        if (string.IsNullOrEmpty(Obj.Text.Trim()))
+                        {
+                            ErrorProvider.SetError(Obj, "Este campo es obligatorio");
+                            validado = false;
+                        }
+                        else
+                        {
+                            ErrorProvider.SetError(Obj, "");
+                        }
+
+                    }
+
+                }
+
+                if (Item is ErrorTxtBox && Item.Name == "txtUser")
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    username = ValidarUserName(Obj, ErrorProvider);
+                }
+
+                if (Item is ErrorTxtBox && (Item.Name == "txtContacto"))
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    contacto = ValidarNombres(Obj, ErrorProvider);
+                }
+
+                 if (Item is ErrorTxtBox && (Item.Name == "txtRubro") )
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    rubro = ValidarNombres(Obj, ErrorProvider);
+                }
+
+                 if (Item is ErrorTxtBox && (Item.Name == "txtCiudad") )
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    ciudad = ValidarNombres(Obj, ErrorProvider);
+                }
+
+                if (Item is ErrorTxtBox && (Item.Name == "txtConfPass"))
+                {
+                    ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                    contrasenias = ValidarContrasenias(Obj, ErrorProvider, Objeto.Controls ["txtPass"].Text.ToString());
+                }
+
+                if (Item is ErrorTxtBox && Item.Name == "txtCuit")
+                {
+                    CuitValidado = ValidarCuit(Objeto.Controls ["txtCuit"], ErrorProvider);
+                }
+
+                if (Item is TxtBoxMail)
+                {
+                    TxtBoxMail ObjMail = (TxtBoxMail)Item;
+                    MailValidado = ValidarEmail(ObjMail, ErrorProvider);
+                }
+                if (Item is NumericTextBox)
+                {
+
+                    NumericTextBox Obj = (NumericTextBox)Item;
+                    if (Obj.Validar == true)
+                    {
+                        if (string.IsNullOrEmpty(Obj.Text.Trim()))
+                        {
+                            ErrorProvider.SetError(Obj, "Este campo es obligatorio");
+                            validado = false;
+                        }
+                        else
+                        {
+                            ErrorProvider.SetError(Obj, "");
+                        }
+
+                    }
+
+                }
+            }
+
+            return (validado && MailValidado && CuitValidado && username && ciudad && rubro && contacto && contrasenias);
         }
     }
 }
