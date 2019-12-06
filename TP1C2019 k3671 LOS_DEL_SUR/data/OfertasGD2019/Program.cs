@@ -10,6 +10,7 @@ using OfertasGD2019.ComprarOferta;
 using OfertasGD2019.AbmCliente;
 using OfertasGD2019.CargarCredito;
 using OfertasGD2019.AbmProveedor;
+using OfertasGD2019.Facturacion;
 
 namespace OfertasGD2019
 {
@@ -23,7 +24,7 @@ namespace OfertasGD2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuAdmin());
+            Application.Run(new Facturar());
         }
     }
 }

@@ -365,7 +365,6 @@ namespace MiLibreria
             {
                 cmd.Parameters.Add("@proveeMail", SqlDbType.NVarChar).Value = mail;
             }
-
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
 
 
@@ -791,6 +790,63 @@ namespace MiLibreria
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmd.Parameters.Clear();
             }
+        }
+
+        public static DataSet ObtenerOfertasAFacturar(List<SqlParameter> parametros)
+        {
+            DataSet listado = new DataSet();
+            var cmd = new SqlCommand("OBTENER_OFERTAS_A_FACTURAR", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+            
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(listado);
+
+            cmd.Parameters.Clear();
+            return listado;
+        }
+
+        //
+        public static void FacturarPeriodoProveedor(List<SqlParameter> parametros)
+        {
+            var cmd = new SqlCommand("REGISTRAR_FACTURA_PROVEEDOR", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Registro realizado con exito!");
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
+            }
+
+        }
+        
+        public static int ChequearPeriodoFacturacion(List<SqlParameter> parametros)
+        {
+            var cmd = new SqlCommand("CHEQUEAR_PERIODO_FACTURACION", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+            return resultado;
+
         }
     }
 }
