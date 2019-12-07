@@ -848,5 +848,160 @@ namespace MiLibreria
             return resultado;
 
         }
+
+        //Listar todas las funcionalidades existentes
+        public static DataSet ListarFuncionalidades()
+        {
+            DataSet funcionalidades = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LISTAR_FUNCIONALIDADES", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(funcionalidades);
+
+            return funcionalidades;
+        }
+
+        //Listar todas las funcionalidades asociadas al rol
+        public static DataSet ObtenerFuncionalidadesXRol(int rolID)
+        {
+            DataSet funcionXRol = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("OBTENER_FUNCIONALIDADES_X_ROL", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(funcionXRol);
+
+            return funcionXRol;
+        }
+
+        //Updatear todas las funcionalidades asociadas al rol
+        public static void UpdateFuncionalidadesXRol(List<SqlParameter> parametros)
+        {
+            var cmd = new SqlCommand("UPDATE_ROL_FUNCIONALIDADES", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Cambio realizado con exito!");
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
+            }
+        }
+
+        //Listar los Roles
+        public static DataSet ListarRoles()
+        {
+            DataSet listadoRoles = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LISTAR_ROLES", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(listadoRoles);
+
+            return listadoRoles;
+        }
+
+        //Obtener nombre del rol
+        public static DataSet ObtenerNombreYEstadoRol(int rolID)
+        {
+            DataSet nombreRol = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("OBTENER_ROL_NOMBRE_ESTADO", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(nombreRol);
+
+            return nombreRol;
+
+        }
+
+        //inhabilitar el rol 
+        public static void InhabilitarRol(int rolID)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("INHABILITAR_ROL", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
+            
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Se inhabilito el rol con exito!");
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
+            }
+
+
+        }
+    
+
+        //habilitarRol el rol 
+        public static void HabilitarRol(int rolID)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("HABILITAR_ROL", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
+            
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Se habilito el rol con exito!");
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
+            }
+
+
+        }
+
+        //Registrar un nuevo rol en la bd
+        public static void RegistrarRol(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("REGISTRAR_ROL", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("¡Se creó el rol con exito!");
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
+            }
+
+
+        }
     }
 }

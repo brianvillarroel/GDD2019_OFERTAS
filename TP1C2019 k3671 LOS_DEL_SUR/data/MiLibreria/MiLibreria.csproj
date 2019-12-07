@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="ABMCliente.cs" />
     <Compile Include="BaseDatos.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="CheckListBoxItem.cs" />
     <Compile Include="DateTxtBox.cs">
       <SubType>Component</SubType>
     </Compile>

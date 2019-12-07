@@ -77,6 +77,24 @@
     <Compile Include="AbmProveedor\RegistroProveedor.Designer.cs">
       <DependentUpon>RegistroProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmRol\CrearRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\CrearRol.Designer.cs">
+      <DependentUpon>CrearRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.Designer.cs">
+      <DependentUpon>ModificarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\SeleccionarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\SeleccionarRol.Designer.cs">
+      <DependentUpon>SeleccionarRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComprarOferta\ComprarOferta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +190,15 @@
     <EmbeddedResource Include="AbmProveedor\RegistroProveedor.resx">
       <DependentUpon>RegistroProveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\CrearRol.resx">
+      <DependentUpon>CrearRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ModificarRol.resx">
+      <DependentUpon>ModificarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\SeleccionarRol.resx">
+      <DependentUpon>SeleccionarRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComprarOferta\ComprarOferta.resx">
       <DependentUpon>ComprarOferta.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +268,7 @@
       <Name>MiLibreria</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

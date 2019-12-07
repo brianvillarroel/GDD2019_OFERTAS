@@ -11,6 +11,7 @@ using OfertasGD2019.AbmCliente;
 using OfertasGD2019.CargarCredito;
 using OfertasGD2019.AbmProveedor;
 using OfertasGD2019.Facturacion;
+using OfertasGD2019.AbmRol;
 
 namespace OfertasGD2019
 {
@@ -24,7 +25,9 @@ namespace OfertasGD2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Facturar());
+            SeleccionarRol main = new SeleccionarRol();
+            main.Show();
+            Application.Run(); // quítale el parámetro aquí
         }
     }
 }
