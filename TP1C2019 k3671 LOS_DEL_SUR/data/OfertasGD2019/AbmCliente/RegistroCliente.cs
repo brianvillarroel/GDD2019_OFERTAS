@@ -62,6 +62,10 @@ namespace OfertasGD2019.AbmCliente
                     List<SqlParameter> parametros = new List<SqlParameter>();
 
                     BaseDatos.RegistrarCliente(SetearParametros());
+
+                    Inicio inicio = new Inicio();
+                    inicio.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -241,6 +245,13 @@ namespace OfertasGD2019.AbmCliente
         private void numDni_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Inicio inicio = new Inicio();
+            inicio.Show();
+            this.Close();
         }
 
         

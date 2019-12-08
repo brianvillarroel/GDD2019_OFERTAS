@@ -21,6 +21,9 @@ namespace MiLibreria
             Boolean MailValidado = true;
             Boolean CuitValidado = true;
             Boolean FechaNacimiento = true;
+            Boolean nombre = true;
+            Boolean apellido = true;
+            Boolean ciudad = true;
             
             foreach (Control element in Objeto.Controls)  
             {
@@ -49,7 +52,21 @@ namespace MiLibreria
                                 {
                                     CuitValidado = ValidarCuit(Obj, ErrorProvider);
                                 }
-                                
+
+                                if (Item.Name == "txtNombre")
+                                {
+                                    nombre = ValidarNombres(Obj, ErrorProvider);
+                                }
+
+                                if (Item.Name == "txtApellido")
+                                {
+                                    apellido = ValidarNombres(Obj, ErrorProvider);
+                                }
+
+                                if (Item.Name == "txtCiudad")
+                                {
+                                    ciudad = ValidarNombres(Obj, ErrorProvider);
+                                }
                             }
 
                         }
@@ -99,7 +116,7 @@ namespace MiLibreria
                     }
                 }
             }
-            return (SinErrores && MailValidado && CuitValidado && CuitValidado && FechaNacimiento);
+            return (SinErrores && MailValidado && CuitValidado && CuitValidado && FechaNacimiento && nombre && apellido && ciudad);
         }
 
         //Funcion para validar el input del mail.
@@ -337,7 +354,7 @@ namespace MiLibreria
             Boolean SinErrores = true;
             Boolean tarjVenc = true;
             Boolean tarjNum = true;
-
+            Boolean nombre = true;
             
             foreach (Control element in Objeto.Controls)
             {
@@ -375,6 +392,12 @@ namespace MiLibreria
                             tarjNum = ValidarTarjeta(Obj, ErrorProvider);
                         }
 
+                        if (Item is ErrorTxtBox && (Item.Name == "txtNombTarj"))
+                        {
+                            ErrorTxtBox Obj = (ErrorTxtBox)Item;
+                            nombre = ValidarNombres(Obj, ErrorProvider);
+                        }
+
                         if (Item is ComboBox)
                         {
                             ComboBox Obj = (ComboBox)Item;
@@ -397,7 +420,7 @@ namespace MiLibreria
                     }
                 }
             }
-            return (SinErrores &&  tarjVenc &&  tarjNum );
+            return (SinErrores && tarjVenc && tarjNum && nombre);
         }
 
 

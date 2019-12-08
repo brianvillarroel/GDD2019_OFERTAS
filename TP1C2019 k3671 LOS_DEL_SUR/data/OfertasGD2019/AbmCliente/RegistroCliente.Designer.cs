@@ -61,6 +61,7 @@
             this.txtConfPass = new MiLibreria.ErrorTxtBox();
             this.txtPass = new MiLibreria.ErrorTxtBox();
             this.txtUser = new MiLibreria.ErrorTxtBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,9 +180,10 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(179, 520);
+            this.button1.Location = new System.Drawing.Point(294, 520);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 34);
             this.button1.TabIndex = 23;
@@ -192,6 +194,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Green;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -394,11 +397,26 @@
             this.txtUser.TabIndex = 60;
             this.txtUser.Validar = true;
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(147, 520);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(108, 34);
+            this.button3.TabIndex = 76;
+            this.button3.Text = "Volver";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // RegistroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 614);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.dateNac);
             this.Controls.Add(this.txtCP);
             this.Controls.Add(this.txtDepto);
@@ -473,5 +491,6 @@
         private MiLibreria.ErrorTxtBox txtUser;
         private System.Windows.Forms.DateTimePicker dateNac;
         private MiLibreria.NumericTextBox txtCP;
+        private System.Windows.Forms.Button button3;
     }
 }

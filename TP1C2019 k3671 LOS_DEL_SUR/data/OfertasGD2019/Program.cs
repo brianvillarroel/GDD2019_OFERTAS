@@ -25,7 +25,7 @@ namespace OfertasGD2019
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SeleccionarRol main = new SeleccionarRol();
+            Inicio main = new Inicio();
             main.Show();
             Application.Run(); // quítale el parámetro aquí
         }
