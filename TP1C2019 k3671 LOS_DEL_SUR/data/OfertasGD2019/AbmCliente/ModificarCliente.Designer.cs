@@ -135,6 +135,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(663, 690);
             this.button1.Name = "button1";
@@ -146,6 +147,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(1340, 690);
             this.button2.Name = "button2";
@@ -157,6 +159,7 @@
             // 
             // btnVolver
             // 
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Location = new System.Drawing.Point(40, 690);
             this.btnVolver.Name = "btnVolver";

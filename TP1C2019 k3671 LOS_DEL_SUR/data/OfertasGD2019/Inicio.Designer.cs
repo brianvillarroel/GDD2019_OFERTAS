@@ -35,6 +35,7 @@
             // 
             // btnIniciar
             // 
+            this.btnIniciar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIniciar.Location = new System.Drawing.Point(130, 62);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(110, 40);
@@ -45,6 +46,7 @@
             // 
             // btnRegistro
             // 
+            this.btnRegistro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistro.Location = new System.Drawing.Point(130, 145);
             this.btnRegistro.Name = "btnRegistro";
             this.btnRegistro.Size = new System.Drawing.Size(110, 40);
@@ -55,6 +57,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(130, 228);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 40);

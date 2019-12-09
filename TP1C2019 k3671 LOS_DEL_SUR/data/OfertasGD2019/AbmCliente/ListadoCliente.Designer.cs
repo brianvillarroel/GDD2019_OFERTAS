@@ -39,6 +39,8 @@
             this.txtMail = new MiLibreria.TxtBoxMail();
             this.numDni = new MiLibreria.NumericTextBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.txtBusqueda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +96,7 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.Location = new System.Drawing.Point(1137, 33);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
@@ -133,6 +136,7 @@
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpiar.Location = new System.Drawing.Point(1231, 33);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
@@ -141,11 +145,36 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Location = new System.Drawing.Point(12, 597);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(100, 40);
+            this.btnVolver.TabIndex = 37;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.AutoSize = true;
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.Location = new System.Drawing.Point(443, 314);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(369, 26);
+            this.txtBusqueda.TabIndex = 38;
+            this.txtBusqueda.Text = "No se han encontrado resultados.";
+            this.txtBusqueda.Visible = false;
+            // 
             // ListadoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1318, 633);
+            this.ClientSize = new System.Drawing.Size(1318, 674);
+            this.Controls.Add(this.txtBusqueda);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBuscar);
@@ -158,6 +187,7 @@
             this.Controls.Add(this.Apellido);
             this.Controls.Add(this.Nombre);
             this.Name = "ListadoCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Clientes";
             this.Load += new System.EventHandler(this.ListadoCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -179,5 +209,7 @@
         public MiLibreria.NumericTextBox numDni;
         public MiLibreria.TxtBoxMail txtMail;
         public System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Label txtBusqueda;
     }
 }

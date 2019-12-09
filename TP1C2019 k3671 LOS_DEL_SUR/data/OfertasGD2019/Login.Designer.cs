@@ -53,6 +53,7 @@
             // 
             // btnAcept
             // 
+            this.btnAcept.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAcept.Location = new System.Drawing.Point(63, 215);
             this.btnAcept.Name = "btnAcept";
             this.btnAcept.Size = new System.Drawing.Size(100, 40);
@@ -63,6 +64,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Location = new System.Drawing.Point(258, 215);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 40);

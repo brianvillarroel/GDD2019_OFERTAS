@@ -311,7 +311,7 @@ namespace MiLibreria
             }
             else
             {
-                cmd.Parameters.Add("@dni", SqlDbType.NVarChar).Value = Convert.ToInt32(dni);
+                cmd.Parameters.Add("@dni", SqlDbType.NVarChar).Value = dni;
             }
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);

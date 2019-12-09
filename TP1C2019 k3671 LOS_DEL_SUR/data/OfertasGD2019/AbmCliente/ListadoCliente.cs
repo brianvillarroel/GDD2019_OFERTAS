@@ -25,6 +25,7 @@ namespace OfertasGD2019.AbmCliente
         {
             InitializeComponent();
             rolUsuario = rolID;
+            dataGridView1.DataSource = BaseDatos.ListarClientes(txtNombre.Text, txtApellido.Text, numDni.Text, txtMail.Text).Tables [0];
         }
 
         //Cuando carga el grid
@@ -36,7 +37,7 @@ namespace OfertasGD2019.AbmCliente
             btnModificar.Text = "Modificar";
             btnModificar.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(btnModificar);
-            btnModificar.Visible = false;
+           
          
             ToolTip TP = new ToolTip();
             TP.ShowAlways = true;
@@ -52,8 +53,18 @@ namespace OfertasGD2019.AbmCliente
 
             //llenar el grid con los datos de los filtros
             dataGridView1.DataSource = BaseDatos.ListarClientes(txtNombre.Text, txtApellido.Text, numDni.Text, txtMail.Text).Tables [0];
-
-            this.dataGridView1.Columns ["Modificar"].Visible = true;
+            if ( dataGridView1.Rows.Count > 0)
+            {
+                 this.dataGridView1.Columns ["Modificar"].Visible = true;
+                 this.txtBusqueda.Visible = false;
+            }
+            else
+            {
+                 dataGridView1.DataSource = null;
+                 this.dataGridView1.Columns ["Modificar"].Visible =  false;
+                this.txtBusqueda.Visible = true;
+            }
+           
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -80,6 +91,7 @@ namespace OfertasGD2019.AbmCliente
             this.txtApellido.Text = "";
             this.numDni.Text = "";
             this.txtMail.Text = "";
+            dataGridView1.DataSource = null;
         }
 
         //Click en modificar me lleva a la pantalla de  modificacion del cliente deseado.
@@ -95,6 +107,11 @@ namespace OfertasGD2019.AbmCliente
                 modificar.Show();
 
             }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

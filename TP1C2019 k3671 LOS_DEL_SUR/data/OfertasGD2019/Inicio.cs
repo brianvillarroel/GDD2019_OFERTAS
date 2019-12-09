@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 using OfertasGD2019.AbmCliente;
+using OfertasGD2019.AbmProveedor;
 
 namespace OfertasGD2019
 {
@@ -25,7 +26,7 @@ namespace OfertasGD2019
              private void btnIniciar_Click(object sender, EventArgs e)
              {
                  Login login = new Login();
-                 this.Hide();
+                 this.Close();
                  login.Show();
                  
              }
@@ -33,14 +34,14 @@ namespace OfertasGD2019
              private void btnRegistro_Click(object sender, EventArgs e)
              {
                  RegistroCliente registro = new RegistroCliente();
-                 this.Hide();
+                 this.Close();
                  registro.Show();
              }
 
              private void button1_Click(object sender, EventArgs e)
              {
-                 RegistroCliente registro = new RegistroCliente();
-                 this.Hide();
+                 RegistroProveedor registro = new RegistroProveedor();
+                 this.Close();
                  registro.Show();
              }
     }

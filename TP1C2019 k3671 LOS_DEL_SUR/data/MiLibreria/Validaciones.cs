@@ -24,6 +24,8 @@ namespace MiLibreria
             Boolean nombre = true;
             Boolean apellido = true;
             Boolean ciudad = true;
+            Boolean contacto = true;
+            Boolean rubro = true;
             
             foreach (Control element in Objeto.Controls)  
             {
@@ -67,6 +69,17 @@ namespace MiLibreria
                                 {
                                     ciudad = ValidarNombres(Obj, ErrorProvider);
                                 }
+
+                                if (Item.Name == "txtContacto")
+                                {
+                                    contacto = ValidarNombres(Obj, ErrorProvider);
+                                }
+
+                                if (Item.Name == "txtRubro")
+                                {
+                                    rubro = ValidarNombres(Obj, ErrorProvider);
+                                }
+
                             }
 
                         }
@@ -116,7 +129,7 @@ namespace MiLibreria
                     }
                 }
             }
-            return (SinErrores && MailValidado && CuitValidado && CuitValidado && FechaNacimiento && nombre && apellido && ciudad);
+            return (SinErrores && MailValidado && CuitValidado && CuitValidado && FechaNacimiento && nombre && apellido && ciudad && contacto && rubro);
         }
 
         //Funcion para validar el input del mail.
@@ -211,7 +224,7 @@ namespace MiLibreria
         public static Boolean ValidarUserName(Control Objeto, ErrorProvider ErrorProvider)
         {
             Boolean SinErrores = true;
-            Regex patronDni = new Regex("^[_a-zA-Z0-9]{4,}$");
+            Regex patronDni = new Regex("^[a-zA-Z0-9]{1}[_a-zA-Z0-9-]{3,}$");
 
 
             SinErrores = (patronDni.IsMatch(Objeto.Text.Trim()));
@@ -219,7 +232,7 @@ namespace MiLibreria
 
             if (!SinErrores)
             {
-                ErrorProvider.SetError(Objeto, "El usuario debe tener al menos 4 caracteres alfanumericos sin espacios");
+                ErrorProvider.SetError(Objeto, "El usuario debe tener al menos 4 caracteres alfanumericos sin espacios y comenzar con una letra o un numero");
             }
             else
             {
@@ -233,7 +246,7 @@ namespace MiLibreria
         public static Boolean ValidarNombres(Control Objeto, ErrorProvider ErrorProvider)
         {
             Boolean SinErrores = true;
-            Regex patronNombres = new Regex(@"^[A-Za-z]+([\s][A-Za-z][A-Za-z]+)*$");
+            Regex patronNombres = new Regex(@"^\p{L}+[\s\p{L}]*$");
 
 
             SinErrores = (patronNombres.IsMatch(Objeto.Text.Trim()));
