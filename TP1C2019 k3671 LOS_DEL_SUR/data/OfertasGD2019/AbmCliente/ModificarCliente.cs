@@ -66,7 +66,7 @@ namespace OfertasGD2019.AbmCliente
         //Si es admin muestro el chackbox para habilitar/Inhabilitar al proveedor, si no no lo muestro.
         private void MostrarCheckBoxHabilitar(int rolID)
         {
-            if (rolID == 2)
+            if (rolID == 2 || rolID == 4)
             {
                 this.checkHabil.Visible = true;
                 this.label24.Visible = true;

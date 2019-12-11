@@ -24,6 +24,7 @@ namespace MiLibreria
         public int AdminId { get {return adminId;}  set { adminId = value; } }
         public int ClienteId { get{return clienteId;}  set { clienteId = value; } }
         public int ProveeId { get{return proveeId;}  set { proveeId = value; } }
+        public List<int> Funcionalidades { get; set; }
 
 
         //public User usuarioActivo = new User();
@@ -50,12 +51,21 @@ namespace MiLibreria
         public static object [] SetearAtributosUsuario(string usuario, User usuarioActivo)
         {
 
-            
+            usuarioActivo.Funcionalidades = new List<int>();
             Object [] datosUsuario = BaseDatos.GetUsuario(usuario);
             if (datosUsuario.Length > 0)
             {
                 usuarioActivo.Id = Convert.ToInt32(datosUsuario [0].ToString());
                 usuarioActivo.Rol = Convert.ToInt32(datosUsuario [1].ToString());
+
+               
+           DataSet rolFuncionalidades = BaseDatos.GetFuncionalidadesUsuario(usuarioActivo.Rol);
+
+            foreach (DataRow theRow in rolFuncionalidades.Tables [0].Rows)
+            {
+                int funcionalidad = Convert.ToInt32(theRow ["FUNCION_ID"].ToString());
+                usuarioActivo.Funcionalidades.Add(funcionalidad);
+            }
 
                 switch (usuarioActivo.Rol)
                 {

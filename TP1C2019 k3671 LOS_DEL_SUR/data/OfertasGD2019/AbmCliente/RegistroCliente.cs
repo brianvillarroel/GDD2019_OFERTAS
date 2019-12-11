@@ -63,8 +63,6 @@ namespace OfertasGD2019.AbmCliente
 
                     BaseDatos.RegistrarCliente(SetearParametros());
 
-                    Inicio inicio = new Inicio();
-                    inicio.Show();
                     this.Close();
                 }
                 else
@@ -249,8 +247,6 @@ namespace OfertasGD2019.AbmCliente
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Inicio inicio = new Inicio();
-            inicio.Show();
             this.Close();
         }
 

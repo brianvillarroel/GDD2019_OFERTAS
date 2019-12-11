@@ -70,16 +70,16 @@ namespace MiLibreria
                                     ciudad = ValidarNombres(Obj, ErrorProvider);
                                 }
 
-                                if (Item.Name == "txtContacto")
-                                {
-                                    contacto = ValidarNombres(Obj, ErrorProvider);
-                                }
-
                                 if (Item.Name == "txtRubro")
                                 {
                                     rubro = ValidarNombres(Obj, ErrorProvider);
                                 }
 
+                            }
+
+                            if (Item.Name == "txtContacto" && Item.Text.Length > 0)
+                            {
+                                contacto = ValidarNombres(Obj, ErrorProvider);
                             }
 
                         }
@@ -145,7 +145,7 @@ namespace MiLibreria
 
             if (!SinErrores)
             {
-                ErrorProvider.SetError(Objeto, "Formato no valido para Mail");
+                ErrorProvider.SetError(Objeto, "Campo Obligatorio. Formato no valido para Mail");
             }
             else 
             {

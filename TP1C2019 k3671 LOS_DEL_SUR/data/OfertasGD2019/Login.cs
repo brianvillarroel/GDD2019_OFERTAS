@@ -48,37 +48,22 @@ namespace OfertasGD2019
                         break;
 
                     case 2: MessageBox.Show("Login Incorrecto");
-                        
-                        RestaurarCampos();
                         txtUsuario.Focus();
                         break;
 
                     case 3: ; 
                         User usuarioActivo = new User();
                         User.SetearAtributosUsuario(user, usuarioActivo);
-                        if (usuarioActivo.Rol == 1)
-                        {
-                            MenuCliente menu = new MenuCliente(usuarioActivo);
-                            this.Hide();
-                            menu.Show();
-                            break;
-                        }
-                        if (usuarioActivo.Rol == 2)
-                        {
-                            MenuAdmin menu = new MenuAdmin(usuarioActivo);
-                            this.Hide();
-                            menu.Show();
-                            break;
-                        }
-                        if (usuarioActivo.Rol == 3)
-                        {
-                            MenuProveedor menu = new MenuProveedor(usuarioActivo);
-                            this.Hide();
-                            menu.Show();
-                            break;
-                        }
+                        Menu_Principal menu = new Menu_Principal(usuarioActivo);
+                        this.Close();
+                        menu.Show();
                         break;
 
+                    case 4: 
+                        MessageBox.Show("El rol del usuario se encuentra inhabilitado o no tiene rol asignado");
+                        txtUsuario.Focus();
+                        break;
+                        ; 
                     default: break;
                 }
         }

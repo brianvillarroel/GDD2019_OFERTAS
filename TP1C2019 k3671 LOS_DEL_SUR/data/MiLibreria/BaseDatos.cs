@@ -74,6 +74,21 @@ namespace MiLibreria
             return values;
         }
 
+        //OBTENER LOS IDS DEL USUARIO
+        public static DataSet GetFuncionalidadesUsuario(int rolid)
+        {
+            DataSet funcionalidades = new DataSet();
+            
+            var cmd = new SqlCommand("OBTENER_ID_FUNCIONALIDADES_ROL", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolid;
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(funcionalidades);
+
+            return funcionalidades;
+        }
+
         //
         public static DataSet EjecutarEnBD(string cmd)
         {
@@ -545,7 +560,7 @@ namespace MiLibreria
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("¡La compra se realizó con éxito!");
+                MessageBox.Show("¡La compra se realizó con éxito! Su codigo de cupon es: " + parametros[3].Value.ToString());
             }
             catch (SqlException)
             {
@@ -648,6 +663,7 @@ namespace MiLibreria
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("¡Se dio de baja el cupon de forma exitosa!");
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {

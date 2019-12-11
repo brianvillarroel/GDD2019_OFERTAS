@@ -26,7 +26,7 @@ namespace OfertasGD2019
              private void btnIniciar_Click(object sender, EventArgs e)
              {
                  Login login = new Login();
-                 this.Close();
+                 this.Hide();
                  login.Show();
                  
              }
@@ -34,14 +34,14 @@ namespace OfertasGD2019
              private void btnRegistro_Click(object sender, EventArgs e)
              {
                  RegistroCliente registro = new RegistroCliente();
-                 this.Close();
+                 this.Hide();
                  registro.Show();
              }
 
              private void button1_Click(object sender, EventArgs e)
              {
                  RegistroProveedor registro = new RegistroProveedor();
-                 this.Close();
+                 this.Hide();
                  registro.Show();
              }
     }
