@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Data;
+using System.Data.SqlClient;
 
 
 namespace MiLibreria
@@ -15,7 +16,7 @@ namespace MiLibreria
     {
         
         //Validaciones para que se llenen los campos obligatorios.
-        public static Boolean ValidarTextBox(Control Objeto, ErrorProvider ErrorProvider)
+        public static Boolean ValidarTextBox(Control Objeto, ErrorProvider ErrorProvider, string id)
         {
             Boolean SinErrores = true;
             Boolean MailValidado = true;
@@ -26,7 +27,10 @@ namespace MiLibreria
             Boolean ciudad = true;
             Boolean contacto = true;
             Boolean rubro = true;
-            
+            Boolean contraseniaActual = true;
+            Boolean nuevaContrasenias = true;
+            string formName = Objeto.Name.ToString();
+
             foreach (Control element in Objeto.Controls)  
             {
 
@@ -82,6 +86,50 @@ namespace MiLibreria
                                 contacto = ValidarNombres(Obj, ErrorProvider);
                             }
 
+                            if (Item.Name == "txtPass" && Item.Text.Length > 0)
+                            {
+                                contraseniaActual = ValidarContraseniaActual(Obj, ErrorProvider, id, formName);
+                            }
+
+                            if ((Item.Name == "txtNuevaPass") && Item.Text.Length > 0)
+                            {
+                                contraseniaActual = ValidarContraseniaActual(element.Controls ["txtPass"], ErrorProvider, id, formName);
+
+                                if (contraseniaActual && !string.IsNullOrEmpty(element.Controls ["txtPass"].Text.Trim()))
+                                {
+                                    if (!string.IsNullOrEmpty(element.Controls ["txtConfPass"].Text.ToString()))
+                                    {
+                                        nuevaContrasenias = ValidarContrasenias(Obj, ErrorProvider, element.Controls ["txtConfPass"].Text.Trim().ToString());
+                                    }
+                                    else
+                                    {
+                                        ErrorProvider.SetError(Obj, "Las contraseñas deben coincidir");
+                                        ErrorProvider.SetError(element.Controls ["txtConfPass"], "Las contraseñas deben coincidir");
+                                        nuevaContrasenias = false;
+                                    }
+                                }
+                              
+                            }
+
+                            if ((Item.Name == "txtConfPass") && Item.Text.Length > 0)
+                            {
+                                contraseniaActual = ValidarContraseniaActual(element.Controls ["txtPass"], ErrorProvider, id, formName);
+
+                                if (contraseniaActual && !string.IsNullOrEmpty(element.Controls ["txtPass"].Text.Trim()))
+                                {
+                                    if (!string.IsNullOrEmpty(element.Controls ["txtNuevaPass"].Text.Trim()))
+                                    {
+                                        nuevaContrasenias = ValidarContrasenias(Obj, ErrorProvider, element.Controls ["txtNuevaPass"].Text.ToString());
+                                    }
+                                    else
+                                    {
+                                        ErrorProvider.SetError(Obj, "Las contraseñas deben coincidir");
+                                        ErrorProvider.SetError(element.Controls ["txtNuevaPass"], "Las contraseñas deben coincidir");
+                                        nuevaContrasenias = false;
+                                    }
+                                }
+                            }
+
                         }
                         if (Item is TxtBoxMail)
                         {
@@ -129,7 +177,76 @@ namespace MiLibreria
                     }
                 }
             }
-            return (SinErrores && MailValidado && CuitValidado && CuitValidado && FechaNacimiento && nombre && apellido && ciudad && contacto && rubro);
+            return (SinErrores && MailValidado && CuitValidado && CuitValidado && FechaNacimiento && nombre && apellido && ciudad && contacto && rubro && nuevaContrasenias && contraseniaActual); 
+        }
+
+        //Funcion para validar contraseña actual.
+        public static Boolean ValidarContraseniaActual(Control Objeto, ErrorProvider ErrorProvider, string id, string formulario)
+        {
+            //SETEO LAS VARIABLES LOCALES
+            int resultado = 0;
+            int ID = Convert.ToInt32(id);
+            Boolean SinErrores = true;
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            SqlParameter parametro;
+
+            parametro = new SqlParameter("@Password", SqlDbType.NVarChar, 255);
+            parametro.Value = Objeto.Text.ToString();
+            parametros.Add(parametro);
+
+            //DEPENDE DE QUE FORM VENGA VALIDO LA CONTRASEÑA DE CLIENTE / PROVEEDOR /Administrativo /ADmin general
+            switch (formulario)
+            { 
+                case "ModificarCliente":
+                    parametro = new SqlParameter("@clieID", SqlDbType.Int);
+                       parametro.Value = ID;
+                       parametros.Add(parametro);
+
+                       resultado = BaseDatos.ValidarContraseniaCliente(parametros);
+                    break;
+
+                case "ModificarProveedor":
+                       parametro = new SqlParameter("@proveeID", SqlDbType.Int);
+                       parametro.Value = ID;
+                       parametros.Add(parametro);
+
+                       resultado = BaseDatos.ValidarContraseniaProveedor(parametros);
+                    break;
+
+                case "ModificarAdministrativo":
+                       parametro = new SqlParameter("@adminID", SqlDbType.Int);
+                       parametro.Value = ID;
+                       parametros.Add(parametro);
+
+                       resultado = BaseDatos.ValidarContraseniaAdministrativo(parametros);
+                    break;
+
+                case "ModificarAdminGeneral":
+                    parametro = new SqlParameter("@adminID", SqlDbType.Int);
+                    parametro.Value = ID;
+                    parametros.Add(parametro);
+
+                    resultado = BaseDatos.ValidarContraseniaAdminGeneral(parametros);
+                    break;
+                default:
+                   
+                    break;
+            }
+         
+
+
+            if (resultado == 0)
+            {
+                ErrorProvider.SetError(Objeto, "La contraseña actual no coincide");
+                SinErrores = false;
+            }
+            else
+            {
+                ErrorProvider.SetError(Objeto, "");
+            }
+
+            return SinErrores;
         }
 
         //Funcion para validar el input del mail.
@@ -350,6 +467,7 @@ namespace MiLibreria
 
             if (confirmarContr == contrasenia)
             {
+                ErrorProvider.SetError(Objeto, "");
                 return SinErrores;
             }
             else

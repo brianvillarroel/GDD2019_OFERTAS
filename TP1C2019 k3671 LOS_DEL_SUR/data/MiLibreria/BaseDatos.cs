@@ -156,6 +156,60 @@ namespace MiLibreria
 
         }
 
+        //Cargar los datos a la pantalla modificar administrativo
+        public static object [] TraerUnAdministrativo(int adminID)
+        {
+            BaseDatos bd = new BaseDatos();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_ADMINISTRATIVO", bd.ConectarBD());
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@adminID", SqlDbType.Int).Value = adminID;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            //DataRow row = new DataRow();
+            Object [] values = new Object [reader.FieldCount];
+            // row = reader;
+            if (reader.Read())
+            {
+                int fieldCount = reader.GetValues(values);
+                fieldCount = reader.GetValues(values);
+                for (int i = 0; i < fieldCount; i++)
+
+                    return values;
+            }
+
+            return values;
+
+        }
+
+        //Cargar los datos a la pantalla modificar administrativo
+        public static object [] TraerAdminGeneral(int adminID)
+        {
+            BaseDatos bd = new BaseDatos();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_ADMIN_GENERAL", bd.ConectarBD());
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@adminID", SqlDbType.Int).Value = adminID;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            //DataRow row = new DataRow();
+            Object [] values = new Object [reader.FieldCount];
+            // row = reader;
+            if (reader.Read())
+            {
+                int fieldCount = reader.GetValues(values);
+                fieldCount = reader.GetValues(values);
+                for (int i = 0; i < fieldCount; i++)
+
+                    return values;
+            }
+
+            return values;
+
+        }
+
         //cHEQUEO EL DNI NO EXISTA ANTES DE GUARDAR LSO DATOS DE UN CLIENTE
         public static int ChequearDniClientes(List<SqlParameter> parametros)
         {
@@ -283,6 +337,64 @@ namespace MiLibreria
 
         }
 
+
+        //Guardar los datos modificados de un administrativo
+
+        public static void UpdateDatosAdministrativo(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LOS_DEL_SUR.UPDATE_ADMINISTRATIVO", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Clear();
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Datos guardados correctamente.");
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+         //Guardar los datos modificados deL ADMIN GRAL
+        public static void UpdateDatosAdminGeneral(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LOS_DEL_SUR.UPDATE_ADMIN_GENERAL", bdd.ConectarBD());
+            SqlCommand comando = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Clear();
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Datos guardados correctamente.");
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+        
 
         //Armar Listado de clientes en ABM CLIENTE
         public static DataSet ListarClientes(string nombre, string apellido, string dni, string mail) 
@@ -1017,6 +1129,111 @@ namespace MiLibreria
                 cmd.Parameters.Clear();
             }
 
+
+        }
+
+        //Obtener Listado porcentaje de edescuento
+        public static DataSet ObtenerListadoProcentajeDescuento(List<SqlParameter> parametros)
+        {
+            DataSet listado = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LISTADO_ESTADISTICO_DESCUENTO", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(listado);
+
+            return listado;
+
+        }
+
+        //Obtener Listado MAYOR FACTURACION
+        public static DataSet ObtenerListadoMayorFacturacion(List<SqlParameter> parametros)
+        {
+            DataSet listado = new DataSet();
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTADO_ESTADISTICO_FACTURACION", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            SqlDataAdapter dp = new SqlDataAdapter(cmd);
+            dp.Fill(listado);
+
+            return listado;
+
+        }
+
+        //VELIDAR CONTRASENIA ACTUAL PROVEEDOR
+        public static int ValidarContraseniaProveedor(List<SqlParameter> parametros)
+        {
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_CONTRASENIA_PROVEEDOR", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+            return resultado;
+
+        }
+
+        //VELIDAR CONTRASENIA ACTUAL CLIENTE
+        public static int ValidarContraseniaCliente(List<SqlParameter> parametros)
+        {
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_CONTRASENIA_CLIENTE", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+            return resultado;
+
+        }
+
+        
+        //VELIDAR CONTRASENIA ACTUAL ADMINSITRATIVO
+        public static int ValidarContraseniaAdministrativo(List<SqlParameter> parametros)
+        {
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_CONTRASENIA_ADMINISTRATIVO", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+            return resultado;
+
+        }
+
+        //VELIDAR CONTRASENIA ACTUAL ADMINSITRATIVO
+        public static int ValidarContraseniaAdminGeneral(List<SqlParameter> parametros)
+        {
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_CONTRASENIA_ADMIN_GENERAL", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+            return resultado;
 
         }
     }

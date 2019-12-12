@@ -12,6 +12,7 @@ using OfertasGD2019.CargarCredito;
 using OfertasGD2019.AbmProveedor;
 using OfertasGD2019.Facturacion;
 using OfertasGD2019.AbmRol;
+using OfertasGD2019.Listado_Estadistico;
 
 namespace OfertasGD2019
 {

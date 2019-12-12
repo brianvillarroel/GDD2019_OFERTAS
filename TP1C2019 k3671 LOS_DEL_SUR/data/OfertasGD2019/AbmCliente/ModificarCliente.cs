@@ -48,7 +48,6 @@ namespace OfertasGD2019.AbmCliente
                 this.txtDepto.Text = datosCliente [10].ToString();
                 this.txtCP.Text = datosCliente [11].ToString();
                 this.txtUser.Text = datosCliente [12].ToString();
-                this.txtPass.Text = datosCliente [13].ToString();
 
                 if (datosCliente [14].ToString() == "True")
                 {
@@ -83,7 +82,7 @@ namespace OfertasGD2019.AbmCliente
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (MiLibreria.Validaciones.ValidarTextBox(this, errorProvider2))
+            if (MiLibreria.Validaciones.ValidarTextBox(this, errorProvider2, this.numID.Text.ToString()))
            {
 
                List<SqlParameter> parametrosDNI = new List<SqlParameter>();
@@ -194,9 +193,12 @@ namespace OfertasGD2019.AbmCliente
                    }
                    parametros.Add(parametro);
 
-                   parametro = new SqlParameter("@cliePassword", SqlDbType.NVarChar, 225);
-                   parametro.Value = this.txtPass.Text;
-                   parametros.Add(parametro);
+                   if (this.txtNuevaPass.Text.ToString() == this.txtConfPass.Text.ToString() && !string.IsNullOrEmpty(this.txtNuevaPass.Text.Trim()))
+                   {
+                       parametro = new SqlParameter("@cliePassword", SqlDbType.NVarChar, 225);
+                       parametro.Value = this.txtNuevaPass.Text;
+                       parametros.Add(parametro);
+                   }
 
                    parametro = new SqlParameter("@clieHabilitado", SqlDbType.Bit);
                    parametro.Value = this.checkHabil.Checked;
@@ -236,6 +238,21 @@ namespace OfertasGD2019.AbmCliente
             this.txtDepto.Text = "";
             this.txtCP.Text = "";
             this.txtPass.Text = "";
+            this.txtConfPass.Text = "";
+            this.txtNuevaPass.Text = "";
+            this.txtConfPass.Enabled = false;
+            this.txtNuevaPass.Enabled = false;
+            this.txtConfPass.Validar = false;
+            this.txtNuevaPass.Validar = false;
+        }
+
+        //Al escribir la contraseña actual habilito los otros campos
+        private void txtPass_TextChanged(object sender, EventArgs e)
+        {
+            this.txtConfPass.Enabled = true;
+            this.txtNuevaPass.Enabled = true;
+            this.txtConfPass.Validar = true;
+            this.txtNuevaPass.Validar = true;
         }
     }
 }

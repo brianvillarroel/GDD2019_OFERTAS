@@ -13,7 +13,7 @@ namespace MiLibreria
         public static Boolean GuardarForm(Control Objeto, ErrorProvider errorProvider)
         {
             //Valida obligatoriedad de los campos
-            Boolean camposOblig = Validaciones.ValidarTextBox(Objeto, errorProvider);
+            Boolean camposOblig = Validaciones.ValidarTextBox(Objeto, errorProvider, "sa");
 
             if (camposOblig)
             {
