@@ -15,11 +15,17 @@ namespace OfertasGD2019.AbmProveedor
 {
     public partial class RegistroProveedor : Form
     {
+        string menuText;
         public RegistroProveedor()
         {
             InitializeComponent();
         }
 
+        public RegistroProveedor(string menu)
+        {
+            InitializeComponent();
+            menuText = menu;
+        }
       
         public  void Guardar(object sender, EventArgs e)
         {
@@ -59,8 +65,14 @@ namespace OfertasGD2019.AbmProveedor
                     List<SqlParameter> parametros = new List<SqlParameter>();
 
                     BaseDatos.RegistrarProveedor(SetearParametros());
-                    Inicio inicio = new Inicio();
-                    inicio.Show();
+
+                    if (menuText == "Registrar Proveedor")
+                    {
+                        Inicio inicio = new Inicio();
+                        inicio.Show();
+                        this.Close();
+                    }
+           
                     this.Close();
                 }
                 else
@@ -190,7 +202,12 @@ namespace OfertasGD2019.AbmProveedor
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Inicio inicio = new Inicio();
+            if (menuText == "Registrar Proveedor")
+            {
+                Inicio inicio = new Inicio();
+                inicio.Show();
+                this.Close();
+            }
             this.Close();
         }
     }

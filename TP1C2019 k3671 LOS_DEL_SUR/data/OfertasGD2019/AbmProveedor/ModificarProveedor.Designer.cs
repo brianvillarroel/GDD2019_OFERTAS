@@ -46,29 +46,30 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtConfPass = new MiLibreria.ErrorTxtBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtNuevaPass = new MiLibreria.ErrorTxtBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.numID = new MiLibreria.NumericTextBox();
+            this.txtPass = new MiLibreria.ErrorTxtBox();
+            this.txtUser = new MiLibreria.ErrorTxtBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtCuit = new MiLibreria.ErrorTxtBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtCuit = new MiLibreria.ErrorTxtBox();
             this.txtRubro = new MiLibreria.ErrorTxtBox();
             this.txtRSoc = new MiLibreria.ErrorTxtBox();
             this.numTelefono = new MiLibreria.NumericTextBox();
             this.txtContacto = new MiLibreria.ErrorTxtBox();
             this.txtMail = new MiLibreria.TxtBoxMail();
-            this.txtConfPass = new MiLibreria.ErrorTxtBox();
-            this.txtNuevaPass = new MiLibreria.ErrorTxtBox();
-            this.numID = new MiLibreria.NumericTextBox();
-            this.txtPass = new MiLibreria.ErrorTxtBox();
-            this.txtUser = new MiLibreria.ErrorTxtBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numCP = new MiLibreria.NumericTextBox();
             this.txtDepto = new MiLibreria.ErrorTxtBox();
             this.numPiso = new MiLibreria.NumericTextBox();
             this.txtCiudad = new MiLibreria.ErrorTxtBox();
             this.txtCalle = new MiLibreria.ErrorTxtBox();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -206,7 +207,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(918, 64);
+            this.label11.Location = new System.Drawing.Point(918, 61);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 17);
@@ -302,6 +303,17 @@
             this.groupBox2.Text = "Datos Usuario";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // txtConfPass
+            // 
+            this.txtConfPass.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtConfPass.Enabled = false;
+            this.txtConfPass.Location = new System.Drawing.Point(202, 226);
+            this.txtConfPass.MaxLength = 25;
+            this.txtConfPass.Name = "txtConfPass";
+            this.txtConfPass.Size = new System.Drawing.Size(270, 26);
+            this.txtConfPass.TabIndex = 42;
+            this.txtConfPass.Validar = false;
+            // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -315,6 +327,17 @@
             this.label5.Text = "Confirmar Contraseña";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtNuevaPass
+            // 
+            this.txtNuevaPass.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtNuevaPass.Enabled = false;
+            this.txtNuevaPass.Location = new System.Drawing.Point(202, 174);
+            this.txtNuevaPass.MaxLength = 25;
+            this.txtNuevaPass.Name = "txtNuevaPass";
+            this.txtNuevaPass.Size = new System.Drawing.Size(270, 26);
+            this.txtNuevaPass.TabIndex = 40;
+            this.txtNuevaPass.Validar = false;
+            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -327,161 +350,6 @@
             this.label4.TabIndex = 39;
             this.label4.Text = "Nueva Contraseña";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.txtCuit);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.txtRubro);
-            this.groupBox3.Controls.Add(this.txtRSoc);
-            this.groupBox3.Controls.Add(this.numTelefono);
-            this.groupBox3.Controls.Add(this.txtContacto);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.txtMail);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox3.Location = new System.Drawing.Point(40, 60);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1400, 175);
-            this.groupBox3.TabIndex = 37;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Datos Proveedor";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(481, 64);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 17);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Contacto";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(918, 109);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 17);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Rubro";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.numCP);
-            this.groupBox1.Controls.Add(this.txtDepto);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.numPiso);
-            this.groupBox1.Controls.Add(this.txtCiudad);
-            this.groupBox1.Controls.Add(this.label29);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtCalle);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox1.Location = new System.Drawing.Point(40, 280);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1400, 175);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dirección";
-            // 
-            // errorProvider2
-            // 
-            this.errorProvider2.ContainerControl = this;
-            // 
-            // txtCuit
-            // 
-            this.txtCuit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCuit.Location = new System.Drawing.Point(133, 100);
-            this.txtCuit.MaxLength = 13;
-            this.txtCuit.Name = "txtCuit";
-            this.txtCuit.Size = new System.Drawing.Size(270, 26);
-            this.txtCuit.TabIndex = 43;
-            this.txtCuit.Validar = true;
-            // 
-            // txtRubro
-            // 
-            this.txtRubro.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtRubro.Location = new System.Drawing.Point(1033, 103);
-            this.txtRubro.MaxLength = 30;
-            this.txtRubro.Name = "txtRubro";
-            this.txtRubro.Size = new System.Drawing.Size(270, 26);
-            this.txtRubro.TabIndex = 38;
-            this.txtRubro.Validar = true;
-            // 
-            // txtRSoc
-            // 
-            this.txtRSoc.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtRSoc.Location = new System.Drawing.Point(133, 60);
-            this.txtRSoc.MaxLength = 50;
-            this.txtRSoc.Name = "txtRSoc";
-            this.txtRSoc.Size = new System.Drawing.Size(270, 26);
-            this.txtRSoc.TabIndex = 32;
-            this.txtRSoc.Validar = true;
-            // 
-            // numTelefono
-            // 
-            this.numTelefono.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.numTelefono.Location = new System.Drawing.Point(1033, 61);
-            this.numTelefono.MaxLength = 12;
-            this.numTelefono.Name = "numTelefono";
-            this.numTelefono.Size = new System.Drawing.Size(270, 26);
-            this.numTelefono.TabIndex = 40;
-            this.numTelefono.Validar = true;
-            // 
-            // txtContacto
-            // 
-            this.txtContacto.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtContacto.Location = new System.Drawing.Point(583, 58);
-            this.txtContacto.MaxLength = 30;
-            this.txtContacto.Name = "txtContacto";
-            this.txtContacto.Size = new System.Drawing.Size(270, 26);
-            this.txtContacto.TabIndex = 36;
-            this.txtContacto.Validar = false;
-            // 
-            // txtMail
-            // 
-            this.txtMail.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtMail.Location = new System.Drawing.Point(583, 100);
-            this.txtMail.MaxLength = 50;
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(270, 26);
-            this.txtMail.TabIndex = 39;
-            // 
-            // txtConfPass
-            // 
-            this.txtConfPass.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtConfPass.Enabled = false;
-            this.txtConfPass.Location = new System.Drawing.Point(202, 226);
-            this.txtConfPass.MaxLength = 25;
-            this.txtConfPass.Name = "txtConfPass";
-            this.txtConfPass.Size = new System.Drawing.Size(270, 26);
-            this.txtConfPass.TabIndex = 42;
-            this.txtConfPass.Validar = false;
-            // 
-            // txtNuevaPass
-            // 
-            this.txtNuevaPass.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtNuevaPass.Enabled = false;
-            this.txtNuevaPass.Location = new System.Drawing.Point(202, 174);
-            this.txtNuevaPass.MaxLength = 25;
-            this.txtNuevaPass.Name = "txtNuevaPass";
-            this.txtNuevaPass.Size = new System.Drawing.Size(270, 26);
-            this.txtNuevaPass.TabIndex = 40;
-            this.txtNuevaPass.Validar = false;
             // 
             // numID
             // 
@@ -512,6 +380,135 @@
             this.txtUser.Size = new System.Drawing.Size(270, 26);
             this.txtUser.TabIndex = 32;
             this.txtUser.Validar = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtCuit);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.txtRubro);
+            this.groupBox3.Controls.Add(this.txtRSoc);
+            this.groupBox3.Controls.Add(this.numTelefono);
+            this.groupBox3.Controls.Add(this.txtContacto);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.txtMail);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBox3.Location = new System.Drawing.Point(40, 60);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(1400, 175);
+            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Datos Proveedor";
+            // 
+            // txtCuit
+            // 
+            this.txtCuit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtCuit.Location = new System.Drawing.Point(133, 100);
+            this.txtCuit.MaxLength = 13;
+            this.txtCuit.Name = "txtCuit";
+            this.txtCuit.Size = new System.Drawing.Size(270, 26);
+            this.txtCuit.TabIndex = 43;
+            this.txtCuit.Validar = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(481, 64);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 17);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Contacto";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(918, 106);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 17);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Rubro";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtRubro
+            // 
+            this.txtRubro.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtRubro.Location = new System.Drawing.Point(1033, 100);
+            this.txtRubro.MaxLength = 30;
+            this.txtRubro.Name = "txtRubro";
+            this.txtRubro.Size = new System.Drawing.Size(270, 26);
+            this.txtRubro.TabIndex = 38;
+            this.txtRubro.Validar = true;
+            // 
+            // txtRSoc
+            // 
+            this.txtRSoc.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtRSoc.Location = new System.Drawing.Point(133, 60);
+            this.txtRSoc.MaxLength = 50;
+            this.txtRSoc.Name = "txtRSoc";
+            this.txtRSoc.Size = new System.Drawing.Size(270, 26);
+            this.txtRSoc.TabIndex = 32;
+            this.txtRSoc.Validar = true;
+            // 
+            // numTelefono
+            // 
+            this.numTelefono.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.numTelefono.Location = new System.Drawing.Point(1033, 58);
+            this.numTelefono.MaxLength = 12;
+            this.numTelefono.Name = "numTelefono";
+            this.numTelefono.Size = new System.Drawing.Size(270, 26);
+            this.numTelefono.TabIndex = 40;
+            this.numTelefono.Validar = true;
+            // 
+            // txtContacto
+            // 
+            this.txtContacto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtContacto.Location = new System.Drawing.Point(583, 58);
+            this.txtContacto.MaxLength = 30;
+            this.txtContacto.Name = "txtContacto";
+            this.txtContacto.Size = new System.Drawing.Size(270, 26);
+            this.txtContacto.TabIndex = 36;
+            this.txtContacto.Validar = false;
+            // 
+            // txtMail
+            // 
+            this.txtMail.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtMail.Location = new System.Drawing.Point(583, 100);
+            this.txtMail.MaxLength = 50;
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(270, 26);
+            this.txtMail.TabIndex = 39;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numCP);
+            this.groupBox1.Controls.Add(this.txtDepto);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.numPiso);
+            this.groupBox1.Controls.Add(this.txtCiudad);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtCalle);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBox1.Location = new System.Drawing.Point(40, 280);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1400, 175);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dirección";
             // 
             // numCP
             // 
@@ -563,11 +560,28 @@
             this.txtCalle.TabIndex = 36;
             this.txtCalle.Validar = true;
             // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // label7
+            // 
+            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label7.Font = new System.Drawing.Font("Stencil Std", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label7.Location = new System.Drawing.Point(0, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(1712, 56);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "Modificar Proveedor";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ModificarProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1712, 875);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnGuardar);
@@ -632,5 +646,6 @@
         private System.Windows.Forms.Label label5;
         private MiLibreria.ErrorTxtBox txtNuevaPass;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -28,7 +28,7 @@ namespace OfertasGD2019
             Application.SetCompatibleTextRenderingDefault(false);
             Inicio main = new Inicio();
             main.Show();
-            Application.Run(); // quítale el parámetro aquí
+            Application.Run(); // 
         }
     }
 }

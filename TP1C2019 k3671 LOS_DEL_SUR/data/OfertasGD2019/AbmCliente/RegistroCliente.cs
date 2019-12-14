@@ -15,26 +15,18 @@ namespace OfertasGD2019.AbmCliente
 {
     public partial class RegistroCliente : Form
     {
+        string menuText;
         public RegistroCliente()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public RegistroCliente(string menu)
         {
-
+            InitializeComponent();
+            menuText = menu;
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         public  void Guardar(object sender, EventArgs e)
         {
             if (Validaciones.ValidarRegistroCliente(this, errorProvider1))
@@ -63,6 +55,13 @@ namespace OfertasGD2019.AbmCliente
 
                     BaseDatos.RegistrarCliente(SetearParametros());
 
+                    if (menuText == "Registrar Cliente")
+                    {
+                        Inicio inicio = new Inicio();
+                        inicio.Show();
+                        this.Close();
+                    }
+           
                     this.Close();
                 }
                 else
@@ -190,67 +189,19 @@ namespace OfertasGD2019.AbmCliente
             return parametros;
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUser_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void errorTxtBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUser_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void txtUser_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtMail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUser_TextChanged_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateNac_DateChanged(object sender, DateRangeEventArgs e)
-        {
-
-        }
-
-        private void numDni_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (menuText == "Registrar Cliente")
+            {
+                Inicio inicio = new Inicio();
+                inicio.Show();
+                this.Close();
+            }
+
             this.Close();
         }
-
-        
        
     }
 }

@@ -56,7 +56,6 @@
             this.txtPass = new MiLibreria.ErrorTxtBox();
             this.txtUser = new MiLibreria.ErrorTxtBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtFechaNac = new MiLibreria.DateTxtBox();
             this.txtNombre = new MiLibreria.ErrorTxtBox();
             this.numTelefono = new MiLibreria.NumericTextBox();
             this.numDNI = new MiLibreria.NumericTextBox();
@@ -69,6 +68,8 @@
             this.txtCiudad = new MiLibreria.ErrorTxtBox();
             this.txtCalle = new MiLibreria.ErrorTxtBox();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateNac = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -405,7 +406,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtFechaNac);
+            this.groupBox3.Controls.Add(this.dateNac);
             this.groupBox3.Controls.Add(this.txtNombre);
             this.groupBox3.Controls.Add(this.numTelefono);
             this.groupBox3.Controls.Add(this.label2);
@@ -425,15 +426,6 @@
             this.groupBox3.TabIndex = 37;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos Personales";
-            // 
-            // txtFechaNac
-            // 
-            this.txtFechaNac.Location = new System.Drawing.Point(1033, 103);
-            this.txtFechaNac.MaxLength = 10;
-            this.txtFechaNac.Name = "txtFechaNac";
-            this.txtFechaNac.Size = new System.Drawing.Size(270, 26);
-            this.txtFechaNac.TabIndex = 41;
-            this.txtFechaNac.Validar = false;
             // 
             // txtNombre
             // 
@@ -559,11 +551,37 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Stencil Std", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1712, 56);
+            this.label1.TabIndex = 61;
+            this.label1.Text = "Modificar Cliente";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dateNac
+            // 
+            this.dateNac.CustomFormat = "yyyy-MM-dd";
+            this.dateNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateNac.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNac.Location = new System.Drawing.Point(1033, 106);
+            this.dateNac.MaxDate = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            this.dateNac.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateNac.Name = "dateNac";
+            this.dateNac.Size = new System.Drawing.Size(270, 23);
+            this.dateNac.TabIndex = 76;
+            this.dateNac.Value = new System.DateTime(2001, 12, 31, 0, 0, 0, 0);
+            // 
             // ModificarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1712, 875);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.button2);
@@ -624,10 +642,11 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
-        private MiLibreria.DateTxtBox txtFechaNac;
         private MiLibreria.ErrorTxtBox txtConfPass;
         private System.Windows.Forms.Label label5;
         private MiLibreria.ErrorTxtBox txtNuevaPass;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateNac;
     }
 }

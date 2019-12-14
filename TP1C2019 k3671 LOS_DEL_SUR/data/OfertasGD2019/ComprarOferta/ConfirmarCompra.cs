@@ -37,6 +37,8 @@ namespace OfertasGD2019.ComprarOferta
             oferta_ID = ofertaID;
             precio_lista = precioLista;
 
+            this.button3.Enabled = false;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace OfertasGD2019.ComprarOferta
 
         private void numCantidad_TextChanged(object sender, EventArgs e)
         {
-            
+            this.button3.Enabled = true;
         }
 
         private void errorTxtBox1_TextChanged(object sender, EventArgs e)
@@ -72,14 +74,18 @@ namespace OfertasGD2019.ComprarOferta
         //Click en Volver
         private void button1_Click(object sender, EventArgs e)
         {
-            ComprarOfertas comprarOferta = new ComprarOfertas(cliente_ID);
             this.Close();
-            comprarOferta.Show();
         }
 
         //Click en ACEPTAR
         private void button3_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty (this.numCantidad.Text.ToString()))
+            {
+                MessageBox.Show("Debe poner la cantidad que desea comprar");
+            }
+            else
+            {
             calcularTotalCompra();
             List<SqlParameter> parametros = new List<SqlParameter>();
             SqlParameter parametro;
@@ -129,6 +135,7 @@ namespace OfertasGD2019.ComprarOferta
                 { 
                 }
 
+            }
             }
         }
 

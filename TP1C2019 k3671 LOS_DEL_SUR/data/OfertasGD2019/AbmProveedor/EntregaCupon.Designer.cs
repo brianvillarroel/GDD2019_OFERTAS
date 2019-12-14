@@ -43,6 +43,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVEntrega)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             this.dataGVEntrega.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGVEntrega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGVEntrega.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGVEntrega.Location = new System.Drawing.Point(49, 262);
+            this.dataGVEntrega.Location = new System.Drawing.Point(49, 267);
             this.dataGVEntrega.MultiSelect = false;
             this.dataGVEntrega.Name = "dataGVEntrega";
             this.dataGVEntrega.ReadOnly = true;
@@ -156,7 +158,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(46, 48);
+            this.label1.Location = new System.Drawing.Point(46, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(282, 17);
             this.label1.TabIndex = 21;
@@ -176,7 +178,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(331, 50);
+            this.label3.Location = new System.Drawing.Point(331, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 17);
             this.label3.TabIndex = 23;
@@ -193,11 +195,36 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Stencil Std", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label16.Location = new System.Drawing.Point(0, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(783, 71);
+            this.label16.TabIndex = 61;
+            this.label16.Text = "Entrega Cupon";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.AutoSize = true;
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.Location = new System.Drawing.Point(192, 415);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(369, 26);
+            this.txtBusqueda.TabIndex = 62;
+            this.txtBusqueda.Text = "No se han encontrado resultados.";
+            this.txtBusqueda.Visible = false;
+            // 
             // EntregaCupon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 722);
+            this.ClientSize = new System.Drawing.Size(783, 722);
+            this.Controls.Add(this.txtBusqueda);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -238,5 +265,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label txtBusqueda;
     }
 }

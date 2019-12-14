@@ -48,6 +48,7 @@
             this.txtTotal = new System.Windows.Forms.Label();
             this.txtBusqueda = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVFacturacion)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(532, 186);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(81, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
@@ -115,9 +116,10 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(84, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(312, 17);
+            this.label4.Size = new System.Drawing.Size(834, 17);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Seleccione un período para la facturación";
+            this.label4.Text = "Seleccione un período para la facturación (El mes actual no se podrá facturar, so" +
+    "lo meses que hayan terminado.)";
             // 
             // label5
             // 
@@ -252,11 +254,23 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Location = new System.Drawing.Point(643, 186);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(81, 23);
+            this.button2.TabIndex = 67;
+            this.button2.Text = "Limpiar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Facturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 658);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.txtTotal);
@@ -308,5 +322,6 @@
         private System.Windows.Forms.Label txtTotal;
         private System.Windows.Forms.Label txtBusqueda;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -112,20 +112,20 @@ namespace OfertasGD2019.AbmCliente
                 {
                     case "Comprar Oferta":
                         ComprarOfertas comprarOferta = new ComprarOfertas(clieID);
+                        comprarOferta.ShowDialog();
                         this.Close();
-                        comprarOferta.Show();
                         break;
 
                     case "ABM Cliente":
                         ModificarCliente modificar = new ModificarCliente(clieID, rolUsuario);
+                        modificar.ShowDialog();
                         this.Close();
-                        modificar.Show();
                         break;
 
                     case "Cargar Crédito":
                         CargaCredito cargarCredito = new CargaCredito(clieID);
+                        cargarCredito.ShowDialog();
                         this.Close();
-                        cargarCredito.Show();
                         break;
                 }
                 

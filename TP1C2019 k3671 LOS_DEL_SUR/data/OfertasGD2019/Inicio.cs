@@ -26,23 +26,26 @@ namespace OfertasGD2019
              private void btnIniciar_Click(object sender, EventArgs e)
              {
                  Login login = new Login();
-                 this.Hide();
+                 this.Close();
                  login.Show();
                  
              }
 
              private void btnRegistro_Click(object sender, EventArgs e)
              {
-                 RegistroCliente registro = new RegistroCliente();
-                 this.Hide();
+                 string menuText = this.btnRegistro.Text.ToString();
+                 RegistroCliente registro = new RegistroCliente(menuText);
+                 this.Close();
                  registro.Show();
              }
 
              private void button1_Click(object sender, EventArgs e)
              {
-                 RegistroProveedor registro = new RegistroProveedor();
-                 this.Hide();
+                 string menuText = this.button1.Text.ToString();
+                 RegistroProveedor registro = new RegistroProveedor(menuText);
+                 this.Close();
                  registro.Show();
              }
+
     }
 }

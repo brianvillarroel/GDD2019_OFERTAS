@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABMCliente.cs" />
     <Compile Include="BaseDatos.cs" />
     <Compile Include="CheckListBoxItem.cs" />
     <Compile Include="DateTxtBox.cs">

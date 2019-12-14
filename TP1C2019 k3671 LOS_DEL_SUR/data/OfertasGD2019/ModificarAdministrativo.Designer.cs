@@ -48,6 +48,7 @@
             this.txtNombre = new MiLibreria.ErrorTxtBox();
             this.txtApellido = new MiLibreria.ErrorTxtBox();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
@@ -83,7 +84,7 @@
             // 
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(663, 784);
+            this.button1.Location = new System.Drawing.Point(444, 524);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 34;
@@ -95,7 +96,7 @@
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1340, 784);
+            this.button2.Location = new System.Drawing.Point(849, 524);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 40);
             this.button2.TabIndex = 35;
@@ -107,7 +108,7 @@
             // 
             this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(40, 784);
+            this.btnVolver.Location = new System.Drawing.Point(39, 524);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(100, 40);
             this.btnVolver.TabIndex = 36;
@@ -156,7 +157,7 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox2.Location = new System.Drawing.Point(40, 206);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1400, 286);
+            this.groupBox2.Size = new System.Drawing.Size(909, 286);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Usuario";
@@ -247,9 +248,9 @@
             this.groupBox3.Controls.Add(this.txtApellido);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox3.Location = new System.Drawing.Point(40, 60);
+            this.groupBox3.Location = new System.Drawing.Point(40, 73);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1400, 122);
+            this.groupBox3.Size = new System.Drawing.Size(909, 122);
             this.groupBox3.TabIndex = 37;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos Personales";
@@ -278,11 +279,24 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Stencil Std", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label16.Location = new System.Drawing.Point(0, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(986, 70);
+            this.label16.TabIndex = 61;
+            this.label16.Text = "Modificar Administrativo";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ModificarAdministrativo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1712, 875);
+            this.ClientSize = new System.Drawing.Size(986, 622);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.button2);
@@ -324,5 +338,6 @@
         private System.Windows.Forms.Label label5;
         private MiLibreria.ErrorTxtBox txtNuevaPass;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label16;
     }
 }

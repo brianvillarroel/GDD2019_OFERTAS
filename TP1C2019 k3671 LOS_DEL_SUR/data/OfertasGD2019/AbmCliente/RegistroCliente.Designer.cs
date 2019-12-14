@@ -74,7 +74,6 @@
             this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nombre*";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -145,7 +144,6 @@
             this.label9.Size = new System.Drawing.Size(64, 17);
             this.label9.TabIndex = 8;
             this.label9.Text = "Ciudad*";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -215,7 +213,6 @@
             this.label13.Size = new System.Drawing.Size(178, 17);
             this.label13.TabIndex = 28;
             this.label13.Text = "Confrirmar Contraseña*";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label14
             // 

@@ -31,17 +31,18 @@ namespace MiLibreria
         //Verificar datos de acceso del login
         public static int Autenticar(string usuario, string password)
         {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            SqlParameter parametro;
 
-            BaseDatos bd = new BaseDatos();
-            //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_USER", bd.ConectarBD());
+            parametro = new SqlParameter("@Usuario", SqlDbType.VarChar);
+            parametro.Value = usuario;
+            parametros.Add(parametro);
 
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
-            cmd.Parameters.Add("@Password", SqlDbType.NVarChar).Value = password;
+            parametro = new SqlParameter("@Password", SqlDbType.NVarChar);
+            parametro.Value = password;
+            parametros.Add(parametro);
 
-            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
-            int result = Convert.ToInt32(cmd.ExecuteScalar());
+            int result = BaseDatos.LoguearUsuario(parametros);
 
 
             return result;

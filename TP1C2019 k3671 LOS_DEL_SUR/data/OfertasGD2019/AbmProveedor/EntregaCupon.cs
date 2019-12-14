@@ -42,18 +42,19 @@ namespace OfertasGD2019.AbmProveedor
             }
 
             DataGridViewButtonColumn btnElegir = new DataGridViewButtonColumn();
-            btnElegir.Name = "Elegir";
-            btnElegir.Text = "Elegir";
+            btnElegir.Name = "Seleccionar";
+            btnElegir.Text = "Seleccionar";
             btnElegir.UseColumnTextForButtonValue = true;
             dataGVEntrega.Columns.Add(btnElegir);
             btnElegir.Visible = true;
         }
 
-
+        //Click en facturar
         private void dataGVEntrega_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
-            if (this.dataGVEntrega.Columns [e.ColumnIndex].Name == "Elegir")
+            //chequeo que la fecha sea anteriro a la actual para facturar
+            if (this.dataGVEntrega.Columns [e.ColumnIndex].Name == "Seleccionar")
             {
                 List<SqlParameter> parametros = new List<SqlParameter>();
                 SqlParameter parametro;
@@ -95,7 +96,8 @@ namespace OfertasGD2019.AbmProveedor
             this.txtMail.Text = "";
             this.numDni.Text = "";
             dataGVEntrega.DataSource = null;
-            this.dataGVEntrega.Columns ["Elegir"].Visible = false;
+            this.dataGVEntrega.Columns ["Seleccionar"].Visible = false;
+            this.txtBusqueda.Visible = true;
         }
 
         //Click en boton buscar
@@ -107,13 +109,25 @@ namespace OfertasGD2019.AbmProveedor
             string mail = this.txtMail.Text.ToString(); 
             //llenar el grid con los datos de los filtros
             dataGVEntrega.DataSource = BaseDatos.ListarClientesEntrega(nombre, apellido, mail, dni).Tables [0];
-            this.dataGVEntrega.Columns ["Elegir"].Visible = true;
+            this.dataGVEntrega.Columns ["Seleccionar"].Visible = true;
 
             dataGVEntrega.Columns [5].Visible = false;
             dataGVEntrega.Columns [6].Visible = false;
             dataGVEntrega.Columns [7].Visible = false;
             dataGVEntrega.Columns [8].Visible = false;
 
+
+            if (dataGVEntrega.Rows.Count > 0)
+            {
+                this.dataGVEntrega.Columns ["Seleccionar"].Visible = true;
+                this.txtBusqueda.Visible = false;
+            }
+            else
+            {
+                dataGVEntrega.DataSource = null;
+                this.dataGVEntrega.Columns ["Seleccionar"].Visible = false;
+                this.txtBusqueda.Visible = true;
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

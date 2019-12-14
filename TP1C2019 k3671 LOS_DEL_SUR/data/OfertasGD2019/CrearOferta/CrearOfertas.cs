@@ -87,6 +87,7 @@ namespace OfertasGD2019.CrearOferta
 
 
                 BaseDatos.InsertOferta(parametros);
+                this.Close();
             }
             else
             {

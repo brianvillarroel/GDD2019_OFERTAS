@@ -32,6 +32,7 @@
             this.dataGVCupones = new System.Windows.Forms.DataGridView();
             this.btnVolver = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
+            this.txtBusqueda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVCupones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,11 +87,23 @@
             this.label16.Text = "Consumo Cupon";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtBusqueda
+            // 
+            this.txtBusqueda.AutoSize = true;
+            this.txtBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusqueda.Location = new System.Drawing.Point(251, 282);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(369, 26);
+            this.txtBusqueda.TabIndex = 61;
+            this.txtBusqueda.Text = "No se han encontrado resultados.";
+            this.txtBusqueda.Visible = false;
+            // 
             // ConsumoCupon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 591);
+            this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dataGVCupones);
@@ -110,5 +123,6 @@
         private System.Windows.Forms.DataGridView dataGVCupones;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label txtBusqueda;
     }
 }

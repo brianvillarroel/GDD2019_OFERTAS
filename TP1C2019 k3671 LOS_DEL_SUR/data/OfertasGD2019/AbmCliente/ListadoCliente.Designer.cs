@@ -41,13 +41,14 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // Nombre
             // 
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(12, 38);
+            this.Nombre.Location = new System.Drawing.Point(12, 82);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(44, 13);
             this.Nombre.TabIndex = 0;
@@ -56,7 +57,7 @@
             // Apellido
             // 
             this.Apellido.AutoSize = true;
-            this.Apellido.Location = new System.Drawing.Point(300, 38);
+            this.Apellido.Location = new System.Drawing.Point(300, 82);
             this.Apellido.Name = "Apellido";
             this.Apellido.Size = new System.Drawing.Size(44, 13);
             this.Apellido.TabIndex = 1;
@@ -65,7 +66,7 @@
             // Mail
             // 
             this.Mail.AutoSize = true;
-            this.Mail.Location = new System.Drawing.Point(861, 38);
+            this.Mail.Location = new System.Drawing.Point(861, 82);
             this.Mail.Name = "Mail";
             this.Mail.Size = new System.Drawing.Size(26, 13);
             this.Mail.TabIndex = 2;
@@ -74,7 +75,7 @@
             // DNI
             // 
             this.DNI.AutoSize = true;
-            this.DNI.Location = new System.Drawing.Point(602, 38);
+            this.DNI.Location = new System.Drawing.Point(602, 82);
             this.DNI.Name = "DNI";
             this.DNI.Size = new System.Drawing.Size(26, 13);
             this.DNI.TabIndex = 3;
@@ -82,14 +83,14 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(62, 35);
+            this.txtNombre.Location = new System.Drawing.Point(62, 79);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(202, 20);
             this.txtNombre.TabIndex = 4;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(359, 35);
+            this.txtApellido.Location = new System.Drawing.Point(359, 79);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(202, 20);
             this.txtApellido.TabIndex = 5;
@@ -97,7 +98,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.Location = new System.Drawing.Point(1137, 33);
+            this.btnBuscar.Location = new System.Drawing.Point(1137, 77);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 8;
@@ -110,7 +111,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 110);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 115);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -121,14 +122,14 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(893, 35);
+            this.txtMail.Location = new System.Drawing.Point(893, 79);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(203, 20);
             this.txtMail.TabIndex = 7;
             // 
             // numDni
             // 
-            this.numDni.Location = new System.Drawing.Point(634, 35);
+            this.numDni.Location = new System.Drawing.Point(634, 79);
             this.numDni.Name = "numDni";
             this.numDni.Size = new System.Drawing.Size(203, 20);
             this.numDni.TabIndex = 6;
@@ -137,7 +138,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.Location = new System.Drawing.Point(1231, 33);
+            this.btnLimpiar.Location = new System.Drawing.Point(1231, 77);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpiar.TabIndex = 10;
@@ -168,11 +169,24 @@
             this.txtBusqueda.Text = "No se han encontrado resultados.";
             this.txtBusqueda.Visible = false;
             // 
+            // label16
+            // 
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Stencil Std", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label16.Location = new System.Drawing.Point(0, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(1318, 56);
+            this.label16.TabIndex = 60;
+            this.label16.Text = "Listado Clientes";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ListadoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1318, 674);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.txtBusqueda);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnLimpiar);
@@ -211,5 +225,6 @@
         public System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label txtBusqueda;
+        private System.Windows.Forms.Label label16;
     }
 }

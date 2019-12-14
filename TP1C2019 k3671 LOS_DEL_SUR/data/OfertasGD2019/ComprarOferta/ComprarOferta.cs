@@ -30,6 +30,8 @@ namespace OfertasGD2019.ComprarOferta
             dataGVOfertas.DataSource = BaseDatos.ListarOfertas().Tables [0];
             this.txtUsername.Text = BaseDatos.ObtenerUsernameCliente(cliente_ID.ToString());
             this.txtSaldo.Text = BaseDatos.ObtenerSaldoCliente(cliente_ID.ToString());
+
+           
         }
 
 
@@ -43,6 +45,18 @@ namespace OfertasGD2019.ComprarOferta
             btnComprar.UseColumnTextForButtonValue = true;
             dataGVOfertas.Columns.Add(btnComprar);
             btnComprar.Visible = true;
+
+            if (dataGVOfertas.Rows.Count > 0)
+            {
+                this.dataGVOfertas.Columns ["Comprar"].Visible = true;
+                this.txtBusqueda.Visible = false;
+            }
+            else
+            {
+                dataGVOfertas.DataSource = null;
+                this.dataGVOfertas.Columns ["Comprar"].Visible = false;
+                this.txtBusqueda.Visible = true;
+            }
 
         }
 
@@ -66,14 +80,6 @@ namespace OfertasGD2019.ComprarOferta
 
 
         //Click en "comprar" me lleva a la pantalla de confirmar la compra.
-        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
 
         private void dataGVOfertas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -91,8 +97,8 @@ namespace OfertasGD2019.ComprarOferta
                 //obtengo el valor del cliente ID de la fila seleccionada para modificar y abro la ventana de modificar con el valor del id.    
 
                 ConfirmarCompra confirmarCompra = new ConfirmarCompra(descripcion, precio, stock, limiteCompra, saldoCliente, ofertaID, precioLista, cliente_ID);
+                confirmarCompra.ShowDialog();
                 this.Close();
-                confirmarCompra.Show();
                 
             }
         }

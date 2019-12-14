@@ -49,11 +49,31 @@ namespace MiLibreria
             }
         }
 
+
+        //OBTENER LOS IDS DEL USUARIO
+        public static int LoguearUsuario(List<SqlParameter> parametros)
+        {
+            //Abrir conexión y el store procedure
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_USER", bdd.ConectarBD());
+            cmd.CommandType = CommandType.StoredProcedure;
+            
+            foreach (SqlParameter p in parametros)
+            {
+                cmd.Parameters.Add(p);
+            }
+            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
+            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Parameters.Clear();
+
+
+            return resultado;
+        }
+
+
         //OBTENER LOS IDS DEL USUARIO
         public static Object [] GetUsuario(string usuario)
         {
-            BaseDatos bd = new BaseDatos();
-            var cmd = new SqlCommand("LOS_DEL_SUR.SETEAR_USER", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.SETEAR_USER", bdd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
@@ -70,7 +90,7 @@ namespace MiLibreria
                 
                     return values;
             }
-
+            cmd.Parameters.Clear();
             return values;
         }
 
@@ -85,7 +105,7 @@ namespace MiLibreria
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
             dp.Fill(funcionalidades);
-
+            cmd.Parameters.Clear();
             return funcionalidades;
         }
 
@@ -105,9 +125,8 @@ namespace MiLibreria
         //Cargar los datos a la pantalla modificar cliente
         public static object[]  TraerUnCliente(int clieID)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_CLIENTE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_CLIENTE", bdd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = clieID;
@@ -124,7 +143,7 @@ namespace MiLibreria
 
                 return values;
             }
-
+            cmd.Parameters.Clear();
             return values;
             
         }
@@ -132,9 +151,8 @@ namespace MiLibreria
         //Cargar los datos a la pantalla modificar Proveedor
         public static object [] TraerUnProveedor(int proveeID)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_PROVEEDOR", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_PROVEEDOR", bdd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = proveeID;
@@ -151,7 +169,7 @@ namespace MiLibreria
 
                 return values;
             }
-
+            cmd.Parameters.Clear();
             return values;
 
         }
@@ -159,9 +177,8 @@ namespace MiLibreria
         //Cargar los datos a la pantalla modificar administrativo
         public static object [] TraerUnAdministrativo(int adminID)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_ADMINISTRATIVO", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_ADMINISTRATIVO", bdd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@adminID", SqlDbType.Int).Value = adminID;
@@ -178,7 +195,7 @@ namespace MiLibreria
 
                     return values;
             }
-
+            cmd.Parameters.Clear();
             return values;
 
         }
@@ -186,9 +203,8 @@ namespace MiLibreria
         //Cargar los datos a la pantalla modificar administrativo
         public static object [] TraerAdminGeneral(int adminID)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_ADMIN_GENERAL", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_ADMIN_GENERAL", bdd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@adminID", SqlDbType.Int).Value = adminID;
@@ -205,7 +221,7 @@ namespace MiLibreria
 
                     return values;
             }
-
+            cmd.Parameters.Clear();
             return values;
 
         }
@@ -213,9 +229,8 @@ namespace MiLibreria
         //cHEQUEO EL DNI NO EXISTA ANTES DE GUARDAR LSO DATOS DE UN CLIENTE
         public static int ChequearDniClientes(List<SqlParameter> parametros)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_DNI_CLIENTE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_DNI_CLIENTE", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -224,11 +239,10 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
             int result = Convert.ToInt32(cmd.ExecuteScalar());
 
-            
+            cmd.Parameters.Clear();
             return result;
         }
 
@@ -247,28 +261,26 @@ namespace MiLibreria
             }
             
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
-
             try
             {
                 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Datos guardados correctamente.");
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
-
-
         }
 
 
         //cHEQUEO EL CUIT NO EXISTA ANTES DE GUARDAR LSO DATOS DE UN CLIENTE
         public static int ChequearCuitProveedor(List<SqlParameter> parametros)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_CUIT_PROVEE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_CUIT_PROVEE", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -287,9 +299,8 @@ namespace MiLibreria
         //cHEQUEO QUE LA Razon Social NO EXISTA ANTES DE GUARDAR LSO DATOS DE UN CLIENTE
         public static int ChequearRazSocProveedor(List<SqlParameter> parametros)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_RS_PROVEE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_RS_PROVEE", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
            
@@ -309,9 +320,8 @@ namespace MiLibreria
 
         public static void UpdatedatosProveedor(List<SqlParameter> parametros)
         {
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.UPDATE_PROVEEDOR", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.UPDATE_PROVEEDOR", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -319,22 +329,19 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
 
             try
             {
-
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Datos guardados correctamente.");
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
-
-
         }
 
 
@@ -358,10 +365,12 @@ namespace MiLibreria
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Datos guardados correctamente.");
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
 
 
@@ -386,10 +395,12 @@ namespace MiLibreria
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Datos guardados correctamente.");
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
 
 
@@ -442,11 +453,9 @@ namespace MiLibreria
             }
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
-
-
             dp.Fill(listadoClientes);
 
-
+            cmd.Parameters.Clear();
             return listadoClientes;
         }
 
@@ -460,9 +469,8 @@ namespace MiLibreria
         public static DataSet ListarProveedores(string razonSocial,  string cuit, string mail)
         {
             DataSet listado = new DataSet();
-            BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_PROVEEDORES", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_PROVEEDORES", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             
             //sETEAR PARAMETROS
@@ -493,15 +501,10 @@ namespace MiLibreria
                 cmd.Parameters.Add("@proveeMail", SqlDbType.NVarChar).Value = mail;
             }
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
-
-
             dp.Fill(listado);
 
-
+            cmd.Parameters.Clear();
             return listado;
-            //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
-
-
         }
 
        
@@ -515,7 +518,7 @@ namespace MiLibreria
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
 
             string result = cmd.ExecuteScalar().ToString();
-
+            cmd.Parameters.Clear();
             return result;
         }
 
@@ -527,7 +530,7 @@ namespace MiLibreria
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
 
             string result = cmd.ExecuteScalar().ToString();
-
+            cmd.Parameters.Clear();
             return result;
         }
 
@@ -539,7 +542,7 @@ namespace MiLibreria
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
 
             string result = cmd.ExecuteScalar().ToString();
-
+            cmd.Parameters.Clear();
             return result;
         }
 
@@ -552,7 +555,7 @@ namespace MiLibreria
             cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = proveeID;
 
             string result = cmd.ExecuteScalar().ToString();
-
+            cmd.Parameters.Clear();
             return result;
         }
 
@@ -570,23 +573,23 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
-
             try
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Carga exitosa.");
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
 
 
         }
 
+        //Registrar oferta
         public static void InsertOferta(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
@@ -604,10 +607,12 @@ namespace MiLibreria
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("¡Oferta creada con éxito!");
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
         }
 
@@ -623,11 +628,9 @@ namespace MiLibreria
             cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = BaseDatos.ObtenerFechaSistema();
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
-
-
             dp.Fill(listadoOfertas);
 
-
+            cmd.Parameters.Clear();
             return listadoOfertas;
         }
 
@@ -651,7 +654,7 @@ namespace MiLibreria
                 cantidadYaComprada = (Convert.ToInt32(cmd.ExecuteScalar()));
             }
             validado = ((cantidadYaComprada + cantidad) <= limiteCompra);
-
+            cmd.Parameters.Clear();
             return validado;
         }
 
@@ -673,10 +676,12 @@ namespace MiLibreria
             {
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("¡La compra se realizó con éxito! Su codigo de cupon es: " + parametros[3].Value.ToString());
+                cmd.Parameters.Clear();
             }
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
         }
 
@@ -694,11 +699,9 @@ namespace MiLibreria
             cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = BaseDatos.ObtenerFechaSistema();
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
-
-
             dp.Fill(listadoCupones);
 
-
+            cmd.Parameters.Clear();
             return listadoCupones;
         }
 
@@ -749,14 +752,13 @@ namespace MiLibreria
             }
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
-
-
             dp.Fill(listadoEntregaClientes);
 
-
+            cmd.Parameters.Clear();
             return listadoEntregaClientes;
         }
 
+        //Registrar la entrega del cupon y darlo de baja
         public static void RegistrarEntrega(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
@@ -767,7 +769,6 @@ namespace MiLibreria
             foreach (SqlParameter p in parametros)
             {
                 cmd.Parameters.Add(p);
-                Console.WriteLine(p.Value);
             }
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
 
@@ -780,6 +781,7 @@ namespace MiLibreria
             catch (SqlException)
             {
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmd.Parameters.Clear();
             }
         }
 
@@ -795,11 +797,9 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
             int resultado = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Parameters.Clear();
-
 
             return resultado;
         }
@@ -816,11 +816,9 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
             int resultado = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Parameters.Clear();
-
 
             return resultado;
         }
@@ -836,7 +834,6 @@ namespace MiLibreria
             {
                 cmd.Parameters.Add(p);
             }
-
 
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
             try
@@ -864,11 +861,9 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
             int resultado = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Parameters.Clear();
-
 
             return resultado;
         }
@@ -885,11 +880,9 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
             int resultado = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Parameters.Clear();
-
 
             return resultado;
         }
@@ -905,7 +898,6 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
             //Ejecutar la consulta y recuperar el valor que retorna la consulta de selección
             try
             {
@@ -920,6 +912,7 @@ namespace MiLibreria
             }
         }
 
+        //Traer las facturas del perodo seleccionado que aun no fueron facturadas
         public static DataSet ObtenerOfertasAFacturar(List<SqlParameter> parametros)
         {
             DataSet listado = new DataSet();
@@ -937,7 +930,7 @@ namespace MiLibreria
             return listado;
         }
 
-        //
+        // Registrar la factura
         public static void FacturarPeriodoProveedor(List<SqlParameter> parametros)
         {
             var cmd = new SqlCommand("LOS_DEL_SUR.REGISTRAR_FACTURA_PROVEEDOR", bdd.ConectarBD());
@@ -947,11 +940,10 @@ namespace MiLibreria
                 cmd.Parameters.Add(p);
             }
 
-
             try
             {
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("¡Registro realizado con exito!");
+                MessageBox.Show("¡La facturacion se realizo con éxito!");
                 cmd.Parameters.Clear();
             }
             catch (SqlException)
@@ -962,21 +954,7 @@ namespace MiLibreria
 
         }
         
-        public static int ChequearPeriodoFacturacion(List<SqlParameter> parametros)
-        {
-            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_PERIODO_FACTURACION", bdd.ConectarBD());
-            cmd.CommandType = CommandType.StoredProcedure;
-            foreach (SqlParameter p in parametros)
-            {
-                cmd.Parameters.Add(p);
-            }
-
-            int resultado = Convert.ToInt32(cmd.ExecuteScalar());
-            cmd.Parameters.Clear();
-            return resultado;
-
-        }
-
+       
         //Listar todas las funcionalidades existentes
         public static DataSet ListarFuncionalidades()
         {
@@ -1077,8 +1055,6 @@ namespace MiLibreria
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmd.Parameters.Clear();
             }
-
-
         }
     
 
@@ -1101,9 +1077,7 @@ namespace MiLibreria
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmd.Parameters.Clear();
             }
-
-
-        }
+                    }
 
         //Registrar un nuevo rol en la bd
         public static void RegistrarRol(List<SqlParameter> parametros)
@@ -1128,8 +1102,6 @@ namespace MiLibreria
                 MessageBox.Show("Failed", "DataError", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmd.Parameters.Clear();
             }
-
-
         }
 
         //Obtener Listado porcentaje de edescuento
@@ -1147,7 +1119,7 @@ namespace MiLibreria
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
             dp.Fill(listado);
-
+            cmd.Parameters.Clear();
             return listado;
 
         }
@@ -1167,7 +1139,7 @@ namespace MiLibreria
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
             dp.Fill(listado);
-
+            cmd.Parameters.Clear();
             return listado;
 
         }
@@ -1185,7 +1157,6 @@ namespace MiLibreria
             int resultado = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Parameters.Clear();
             return resultado;
-
         }
 
         //VELIDAR CONTRASENIA ACTUAL CLIENTE
@@ -1221,7 +1192,7 @@ namespace MiLibreria
 
         }
 
-        //VELIDAR CONTRASENIA ACTUAL ADMINSITRATIVO
+        //VELIDAR CONTRASENIA ACTUAL ADMIN GENERAL
         public static int ValidarContraseniaAdminGeneral(List<SqlParameter> parametros)
         {
             var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_CONTRASENIA_ADMIN_GENERAL", bdd.ConectarBD());

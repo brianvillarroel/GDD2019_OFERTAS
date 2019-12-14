@@ -41,7 +41,7 @@ namespace OfertasGD2019.AbmCliente
                 //Seteo bien el formato de lafecha en "dd/mm/yyyy"
                 DateTime dateAndTime = Convert.ToDateTime (datosCliente [6]);
                 string date = dateAndTime.ToString("dd/MM/yyyy");
-                this.txtFechaNac.Text = date;
+                dateNac.Value = Convert.ToDateTime(datosCliente [6]);
                 this.txtCiudad.Text = datosCliente [7].ToString();
                 this.txtCalle.Text = datosCliente [8].ToString();
                 this.numPiso.Text = datosCliente [9].ToString();
@@ -153,7 +153,7 @@ namespace OfertasGD2019.AbmCliente
                    parametros.Add(parametro);
 
                    parametro = new SqlParameter("@clieFechaNac", SqlDbType.NVarChar, 50);
-                   parametro.Value = this.txtFechaNac.Text;
+                   parametro.Value = dateNac.Value.ToString("dd/MM/yyyy");
                    parametros.Add(parametro);
 
                    parametro = new SqlParameter("@clieCiudad", SqlDbType.NVarChar, 225);
@@ -230,7 +230,6 @@ namespace OfertasGD2019.AbmCliente
             this.txtApellido.Text = "";
             this.numDNI.Text = "";
             this.numTelefono.Text = "";
-            this.txtFechaNac.Text = "";
             this.txtMail.Text = "";
             this.txtCiudad.Text = "";
             this.txtCalle.Text = "";

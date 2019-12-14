@@ -46,6 +46,17 @@ namespace OfertasGD2019.Abm_Proveedor
             dataGVCupones.Columns.Add(btnEntregar);
             btnEntregar.Visible = true;
 
+            if (dataGVCupones.Rows.Count > 0)
+            {
+                this.txtBusqueda.Visible = false;
+                this.dataGVCupones.Columns ["Entregar"].Visible = true;
+            }
+            else
+            {
+                dataGVCupones.DataSource = null;
+                this.dataGVCupones.Columns ["Entregar"].Visible = false;
+                this.txtBusqueda.Visible = true;
+            }
         }
 
        
@@ -65,7 +76,7 @@ namespace OfertasGD2019.Abm_Proveedor
                 }
                 EntregaCupon entregaCupon = new EntregaCupon(clieID, cuponID, cuponCodigo);
                 this.Close();
-                entregaCupon.Show();
+                entregaCupon.ShowDialog();
 
             }
         }

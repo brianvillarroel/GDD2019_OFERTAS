@@ -243,6 +243,24 @@ namespace OfertasGD2019
             {
                 this.MenuItemListado.Visible = false;
             }
+
+            //Ocultar todo el menu ABM si no tiene ninguno disponible
+            if (!usuario.Funcionalidades.Contains(1) && !usuario.Funcionalidades.Contains(2) && !usuario.Funcionalidades.Contains(3))
+            {
+                this.aBMToolStripMenuItem.Visible = false;
+            }
+
+            //Ocultar todo el menu REGISTRO si no tiene ninguno disponible
+            if (!usuario.Funcionalidades.Contains(2) && !usuario.Funcionalidades.Contains(3))
+            {
+                this.registroToolStripMenuItem.Visible = false;
+            }
+
+            //Ocultar todo el menu ACCIONES si no tiene ninguno disponible
+            if (!usuario.Funcionalidades.Contains(4) && !usuario.Funcionalidades.Contains(8) && !usuario.Funcionalidades.Contains(5) && !usuario.Funcionalidades.Contains(6) && !usuario.Funcionalidades.Contains(7))
+            {
+                this.accionesToolStripMenuItem.Visible = false;
+            }
         }
 
         private void modificarDatosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -272,7 +290,9 @@ namespace OfertasGD2019
             }
         }
 
-        
-        
+        private void Menu_Principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

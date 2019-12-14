@@ -17,6 +17,7 @@ namespace OfertasGD2019.Facturacion
         Dictionary<string, string> comboSourceMes;
         int proveeIdFact;
         string valueMes;
+        DateTime fechaActual = BaseDatos.ObtenerFechaSistema();
 
         public Facturar()
         {
@@ -29,12 +30,13 @@ namespace OfertasGD2019.Facturacion
         {
             InitializeComponent();
             proveeIdFact = proveedorID;
-            //Seteo el dropdown
+            
         }
 
         //Cargo los combobox al cargar la pantalla
         private void Facturar_Load(object sender, EventArgs e)
         {
+            //Seteo el dropdown
             comboSourceMes = new Dictionary<string, string>();
             comboSourceMes.Add("Enero", "01");
             comboSourceMes.Add("Febrero", "02");
@@ -53,7 +55,7 @@ namespace OfertasGD2019.Facturacion
             {
                 comboBoxMes.Items.Add(item.ToString());
             }
-            DateTime fechaActual = BaseDatos.ObtenerFechaSistema();
+            
             int anio = fechaActual.Year;
             comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMes.SelectedIndex = 0;
@@ -66,10 +68,6 @@ namespace OfertasGD2019.Facturacion
 
             comboBoxAnio.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxAnio.SelectedIndex = 0;
-
-
-
-
 
             object [] datosProveedor = BaseDatos.TraerUnProveedor(proveeIdFact);
 
@@ -144,36 +142,54 @@ namespace OfertasGD2019.Facturacion
         //Click en Facturar
         private void button3_Click(object sender, EventArgs e)
         {
-            List<SqlParameter> parametrosFactura = new List<SqlParameter>();
-            SqlParameter parametro;
-            //Chequeo que el dni no este registrado
-            parametro = new SqlParameter("@proveedorID", SqlDbType.Int);
-            parametro.Value = proveeIdFact;
-            parametrosFactura.Add(parametro);
+            int anioActual = fechaActual.Year;
+            int mesActual = fechaActual.Month;
 
-            parametro = new SqlParameter("@mes", SqlDbType.Int);
-            parametro.Value = Convert.ToInt32(valueMes);
-            parametrosFactura.Add(parametro);
+            if ((anioActual == Convert.ToInt32(this.comboBoxAnio.SelectedItem)) && ( mesActual <= Convert.ToInt32(valueMes)))
+            {
+                MessageBox.Show("El mes y año de facturacion debe ser menor al actual");
+            }
+            else
+            {
+                List<SqlParameter> parametrosFactura = new List<SqlParameter>();
+                SqlParameter parametro;
+                //Chequeo que el dni no este registrado
+                parametro = new SqlParameter("@proveedorID", SqlDbType.Int);
+                parametro.Value = proveeIdFact;
+                parametrosFactura.Add(parametro);
 
-            parametro = new SqlParameter("@anio", SqlDbType.Int);
-            parametro.Value = Convert.ToInt32(this.comboBoxAnio.SelectedItem.ToString());
-            parametrosFactura.Add(parametro);
+                parametro = new SqlParameter("@mes", SqlDbType.Int);
+                parametro.Value = Convert.ToInt32(valueMes);
+                parametrosFactura.Add(parametro);
 
-            parametro = new SqlParameter("@fecha", SqlDbType.DateTime);
-            parametro.Value = BaseDatos.ObtenerFechaSistema();
-            parametrosFactura.Add(parametro);
+                parametro = new SqlParameter("@anio", SqlDbType.Int);
+                parametro.Value = Convert.ToInt32(this.comboBoxAnio.SelectedItem.ToString());
+                parametrosFactura.Add(parametro);
 
-            parametro = new SqlParameter("@total", SqlDbType.Int);
-            parametro.Value = Convert.ToDecimal(this.txtTotal.Text.ToString());
-            parametrosFactura.Add(parametro);
+                parametro = new SqlParameter("@fecha", SqlDbType.DateTime);
+                parametro.Value = BaseDatos.ObtenerFechaSistema();
+                parametrosFactura.Add(parametro);
 
-            BaseDatos.FacturarPeriodoProveedor(parametrosFactura);
+                parametro = new SqlParameter("@total", SqlDbType.Int);
+                parametro.Value = Convert.ToDecimal(this.txtTotal.Text.ToString());
+                parametrosFactura.Add(parametro);
+
+                BaseDatos.FacturarPeriodoProveedor(parametrosFactura);
+                this.Close();
+            }
             
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGVFacturacion.DataSource = null;
+            this.txtBusqueda.Visible = true;
+            this.btnFacturar.Enabled = false;
         }
     }
 }
