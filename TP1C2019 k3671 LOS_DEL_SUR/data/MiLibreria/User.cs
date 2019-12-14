@@ -34,7 +34,7 @@ namespace MiLibreria
 
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("BUSCAR_USER", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_USER", bd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;

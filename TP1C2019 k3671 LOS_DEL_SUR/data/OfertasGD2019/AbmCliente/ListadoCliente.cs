@@ -117,7 +117,7 @@ namespace OfertasGD2019.AbmCliente
                         break;
 
                     case "ABM Cliente":
-                        ModificarAdministrativo modificar = new ModificarAdministrativo(clieID, rolUsuario);
+                        ModificarCliente modificar = new ModificarCliente(clieID, rolUsuario);
                         this.Close();
                         modificar.Show();
                         break;

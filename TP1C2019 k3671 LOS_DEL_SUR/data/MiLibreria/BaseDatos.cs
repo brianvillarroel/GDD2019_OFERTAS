@@ -53,7 +53,7 @@ namespace MiLibreria
         public static Object [] GetUsuario(string usuario)
         {
             BaseDatos bd = new BaseDatos();
-            var cmd = new SqlCommand("SETEAR_USER", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.SETEAR_USER", bd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
@@ -78,8 +78,8 @@ namespace MiLibreria
         public static DataSet GetFuncionalidadesUsuario(int rolid)
         {
             DataSet funcionalidades = new DataSet();
-            
-            var cmd = new SqlCommand("OBTENER_ID_FUNCIONALIDADES_ROL", bdd.ConectarBD());
+
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_ID_FUNCIONALIDADES_ROL", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolid;
 
@@ -107,7 +107,7 @@ namespace MiLibreria
         {
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("BUSCAR_CLIENTE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_CLIENTE", bd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = clieID;
@@ -134,7 +134,7 @@ namespace MiLibreria
         {
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("BUSCAR_PROVEEDOR", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.BUSCAR_PROVEEDOR", bd.ConectarBD());
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = proveeID;
@@ -215,7 +215,7 @@ namespace MiLibreria
         {
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("CHEQUEAR_DNI_CLIENTE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_DNI_CLIENTE", bd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -237,7 +237,7 @@ namespace MiLibreria
         public static void UpdateDatosCliente(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("UPDATE_CLIENTE", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.UPDATE_CLIENTE", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Clear();
@@ -268,7 +268,7 @@ namespace MiLibreria
         {
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("CHEQUEAR_CUIT_PROVEE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_CUIT_PROVEE", bd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -289,7 +289,7 @@ namespace MiLibreria
         {
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("CHEQUEAR_RS_PROVEE", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_RS_PROVEE", bd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
            
@@ -311,7 +311,7 @@ namespace MiLibreria
         {
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("UPDATE_PROVEEDOR", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.UPDATE_PROVEEDOR", bd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -401,7 +401,7 @@ namespace MiLibreria
         {
             DataSet listadoClientes = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTAR_CLIENTES", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_CLIENTES", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             //sETEAR PARAMETROS
@@ -462,7 +462,7 @@ namespace MiLibreria
             DataSet listado = new DataSet();
             BaseDatos bd = new BaseDatos();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTAR_PROVEEDORES", bd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_PROVEEDORES", bd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             
             //sETEAR PARAMETROS
@@ -509,7 +509,7 @@ namespace MiLibreria
          //OBTENER EL SALDO DEL CLIETNE PARA QUE SEA VISIBLE EN LA PANTALLA DE COMPRAR OFERTAS.
         public static string ObtenerSaldoCliente(string clienteID)
         {
-            var cmd = new SqlCommand("OBTENER_SALDO_CLIENTE", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_SALDO_CLIENTE", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
@@ -522,7 +522,7 @@ namespace MiLibreria
         //OBTENER EL USERNAME DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
         public static string ObtenerUsernameCliente(string clienteID)
         {
-            var cmd = new SqlCommand("OBTENER_USERNAME_CLIENTE", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_USERNAME_CLIENTE", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
 
@@ -534,7 +534,7 @@ namespace MiLibreria
         //OBTENER EL USERNAME y sALDO DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
         public static string ObtenerUsernameSaldoCliente(string clienteID)
         {
-            var cmd = new SqlCommand("OBTENER_USERNAME_SALDO_CLIENTE", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_USERNAME_SALDO_CLIENTE", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clieID", SqlDbType.Int).Value = Int32.Parse(clienteID);
 
@@ -547,7 +547,7 @@ namespace MiLibreria
         //OBTENER EL USERNAME DEL CLIETNE PARA IDENTIFICARLO EN LOS FORMS.
         public static string ObtenerUsernameProveedor(int proveeID)
         {
-            var cmd = new SqlCommand("OBTENER_USERNAME_PROVEEDOR", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_USERNAME_PROVEEDOR", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@proveeID", SqlDbType.Int).Value = proveeID;
 
@@ -561,7 +561,7 @@ namespace MiLibreria
         public static void UpdateCargaCredito(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("CARGAR_CREDITO", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CARGAR_CREDITO", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -590,7 +590,7 @@ namespace MiLibreria
         public static void InsertOferta(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("CREAR_OFERTA", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CREAR_OFERTA", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -616,7 +616,7 @@ namespace MiLibreria
 
             DataSet listadoOfertas = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTAR_OFERTAS", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_OFERTAS", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             //sETEAR PARAMETROS
@@ -636,7 +636,7 @@ namespace MiLibreria
         {
             bool validado = false;
             int cantidadYaComprada;
-            var cmd = new SqlCommand("VALIDAR_LIMITE_COMPRA", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_LIMITE_COMPRA", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@clienteID", SqlDbType.Int).Value = clienteID;
@@ -659,7 +659,7 @@ namespace MiLibreria
         public static void RegistrarCompraOferta(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("REGISTRAR_COMPRA_Y_CUPON", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.REGISTRAR_COMPRA_Y_CUPON", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -686,7 +686,7 @@ namespace MiLibreria
 
             DataSet listadoCupones = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTAR_CUPONES_PROVEEDOR", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_CUPONES_PROVEEDOR", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             //sETEAR PARAMETROS
@@ -708,7 +708,7 @@ namespace MiLibreria
 
             DataSet listadoEntregaClientes = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTAR_CLIENTES", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_CLIENTES", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             //sETEAR PARAMETROS
@@ -760,7 +760,7 @@ namespace MiLibreria
         public static void RegistrarEntrega(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("REGISTRAR_ENTREGA_Y_DAR_DE_BAJA_CUPON", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.REGISTRAR_ENTREGA_Y_DAR_DE_BAJA_CUPON", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -787,7 +787,7 @@ namespace MiLibreria
         public static int ValidarDniDisponible(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("VALIDAR_DNI_BASEDATOS", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_DNI_BASEDATOS", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -808,7 +808,7 @@ namespace MiLibreria
         public static int ValidarUsernameDisponible(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("VALIDAR_USERNAME_BASEDATOS", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_USERNAME_BASEDATOS", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -829,7 +829,7 @@ namespace MiLibreria
         public static void RegistrarCliente(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("REGISTRAR_CLIENTE", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.REGISTRAR_CLIENTE", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -856,7 +856,7 @@ namespace MiLibreria
         public static int ValidarCuitDisponible(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("VALIDAR_CUIT_REGISTRO", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_CUIT_REGISTRO", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -877,7 +877,7 @@ namespace MiLibreria
         public static int ValidarRazSocDisponible(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("VALIDAR_RAZON_SOC_REGISTRO", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.VALIDAR_RAZON_SOC_REGISTRO", bdd.ConectarBD());
             SqlCommand comando = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
@@ -898,7 +898,7 @@ namespace MiLibreria
         public static void RegistrarProveedor(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("REGISTRAR_PROVEEDOR", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.REGISTRAR_PROVEEDOR", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
             {
@@ -923,7 +923,7 @@ namespace MiLibreria
         public static DataSet ObtenerOfertasAFacturar(List<SqlParameter> parametros)
         {
             DataSet listado = new DataSet();
-            var cmd = new SqlCommand("OBTENER_OFERTAS_A_FACTURAR", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_OFERTAS_A_FACTURAR", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
             {
@@ -940,7 +940,7 @@ namespace MiLibreria
         //
         public static void FacturarPeriodoProveedor(List<SqlParameter> parametros)
         {
-            var cmd = new SqlCommand("REGISTRAR_FACTURA_PROVEEDOR", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.REGISTRAR_FACTURA_PROVEEDOR", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
             {
@@ -964,7 +964,7 @@ namespace MiLibreria
         
         public static int ChequearPeriodoFacturacion(List<SqlParameter> parametros)
         {
-            var cmd = new SqlCommand("CHEQUEAR_PERIODO_FACTURACION", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.CHEQUEAR_PERIODO_FACTURACION", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
             {
@@ -982,7 +982,7 @@ namespace MiLibreria
         {
             DataSet funcionalidades = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTAR_FUNCIONALIDADES", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_FUNCIONALIDADES", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
@@ -996,7 +996,7 @@ namespace MiLibreria
         {
             DataSet funcionXRol = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("OBTENER_FUNCIONALIDADES_X_ROL", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_FUNCIONALIDADES_X_ROL", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
@@ -1008,7 +1008,7 @@ namespace MiLibreria
         //Updatear todas las funcionalidades asociadas al rol
         public static void UpdateFuncionalidadesXRol(List<SqlParameter> parametros)
         {
-            var cmd = new SqlCommand("UPDATE_ROL_FUNCIONALIDADES", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.UPDATE_ROL_FUNCIONALIDADES", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             foreach (SqlParameter p in parametros)
             {
@@ -1033,7 +1033,7 @@ namespace MiLibreria
         {
             DataSet listadoRoles = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTAR_ROLES", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTAR_ROLES", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             SqlDataAdapter dp = new SqlDataAdapter(cmd);
@@ -1047,7 +1047,7 @@ namespace MiLibreria
         {
             DataSet nombreRol = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("OBTENER_ROL_NOMBRE_ESTADO", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.OBTENER_ROL_NOMBRE_ESTADO", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
 
@@ -1062,7 +1062,7 @@ namespace MiLibreria
         public static void InhabilitarRol(int rolID)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("INHABILITAR_ROL", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.INHABILITAR_ROL", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
             
@@ -1086,7 +1086,7 @@ namespace MiLibreria
         public static void HabilitarRol(int rolID)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("HABILITAR_ROL", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.HABILITAR_ROL", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@rolID", SqlDbType.Int).Value = rolID;
             
@@ -1109,7 +1109,7 @@ namespace MiLibreria
         public static void RegistrarRol(List<SqlParameter> parametros)
         {
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("REGISTRAR_ROL", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.REGISTRAR_ROL", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             foreach (SqlParameter p in parametros)
@@ -1137,7 +1137,7 @@ namespace MiLibreria
         {
             DataSet listado = new DataSet();
             //Abrir conexión y el store procedure
-            var cmd = new SqlCommand("LISTADO_ESTADISTICO_DESCUENTO", bdd.ConectarBD());
+            var cmd = new SqlCommand("LOS_DEL_SUR.LISTADO_ESTADISTICO_DESCUENTO", bdd.ConectarBD());
             cmd.CommandType = CommandType.StoredProcedure;
 
             foreach (SqlParameter p in parametros)
